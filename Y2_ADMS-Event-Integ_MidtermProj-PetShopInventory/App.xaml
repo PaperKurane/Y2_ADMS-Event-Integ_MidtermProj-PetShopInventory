@@ -1,0 +1,9 @@
+﻿<Application x:Class="Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
