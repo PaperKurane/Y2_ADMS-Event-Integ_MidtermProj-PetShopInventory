@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -69,6 +70,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PetChestConn.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PetChestConn.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +92,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="PetChestConn.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PetChestConn.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PetChestConn.dbml.layout">
+      <DependentUpon>PetChestConn.dbml</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,6 +110,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AppAssets\loginscreenwave-background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppAssets\Pet Chest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppAssets\Pet Chest Transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppAssets\element-paws.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppAssets\wavebottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppAssets\wavetop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

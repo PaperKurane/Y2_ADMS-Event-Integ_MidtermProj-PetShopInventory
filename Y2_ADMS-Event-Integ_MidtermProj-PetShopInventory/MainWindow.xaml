@@ -8,18 +8,23 @@
         ResizeMode='NoResize'
         Title="MainWindow" Height="675" Width="1200" Background="White">
     <Grid>
-        <Image Source="AppAssets\loginscreenwave-background.png" Margin="313,146,0,-7"/>
+        <Image Source="AppAssets\loginscreenwave-background.png" Margin="-10,-10,10,5"/>
 
-        <Rectangle x:Name="rSidebar" HorizontalAlignment="Left" Height="636" Stroke="#FF3491D9" VerticalAlignment="Top" Width="320" Fill="#3F51B5"/>
-        <Label x:Name="lbAppTitle" Content="Pet Center" FontFamily="Segoe UI SemiBold" FontSize="48" Foreground="White" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="28,33,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="86" Width="264"/>
+        <Rectangle x:Name="rSidebar" HorizontalAlignment="Left" Height="636" Stroke="#FF3491D9" VerticalAlignment="Top" Width="320" Fill="#FDEDE5"/>
+        <Image Source="AppAssets\element-paws.png" Margin="-61,179,0,0" HorizontalAlignment="Left" Width="442" Height="464" VerticalAlignment="Top"/>
+        <Image Source="AppAssets\wavetop.png" Margin="0,1,0,0" Height="320" VerticalAlignment="Top" HorizontalAlignment="Left" Width="320"/>
+        <Image Source="AppAssets\wavebottom.png" Margin="0,316,0,0" HorizontalAlignment="Left" Width="320" Height="330" VerticalAlignment="Top"/>
+        <Label x:Name="lbAppTitle" Content="Pet Chest" FontFamily="Segoe UI SemiBold" FontSize="48" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="28,82,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="86" Width="264"/>
+        <Image Source="AppAssets\Pet Chest.png" Margin="62,183,0,0" HorizontalAlignment="Left" Width="196" Height="204" VerticalAlignment="Top"/>
 
-        <Label x:Name="lbSignIn" Content="Sign In" FontFamily="Segoe UI SemiBold" FontSize="48" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="551,136,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="86" Width="211"/>
-        <TextBox x:Name="tbUsername" FontFamily="Segoe UI" FontSize="32" HorizontalAlignment="Left" Margin="551,227,0,0" TextWrapping="NoWrap" Text="Email" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="391" Height="59" BorderBrush="Black" Foreground="Gray"/>
-        <TextBox x:Name="tbPassword" FontFamily="Segoe UI" FontSize="32" HorizontalAlignment="Left" Margin="551,298,0,0" TextWrapping="NoWrap" Text="Password" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="391" Height="60" BorderBrush="Black" Foreground="Gray"/>
+
+        <Label x:Name="lbSignIn" Content="Sign In" FontFamily="Segoe UI SemiBold" FontSize="48" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="540,118,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="86" Width="211"/>
+        <TextBox x:Name="tbUsername" FontFamily="Segoe UI" FontSize="32" HorizontalAlignment="Left" Margin="540,229,0,0" TextWrapping="NoWrap" Text=" Username" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="391" Height="59" BorderBrush="Black" Foreground="Gray"/>
+        <TextBox x:Name="tbPassword" FontFamily="Segoe UI" FontSize="32" HorizontalAlignment="Left" Margin="540,320,0,0" TextWrapping="NoWrap" Text=" Password" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="391" Height="60" BorderBrush="Black" Foreground="Gray"/>
 
 
         <Rectangle x:Name="rBorderReference" HorizontalAlignment="Center" Height="23" Margin="0,636,0,0" VerticalAlignment="Top" Width="1200" Fill="Black" Stroke="Black"/>
         <Rectangle x:Name="rBorderReferenceVertical" HorizontalAlignment="Left" Height="658" Margin="1186,0,0,0" VerticalAlignment="Center" Width="14" Fill="Black" Stroke="Black"/>
-        <Button x:Name="btnLogin" Content="Log In" FontSize="30" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="551,408,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="60" Width="391"/>
+        <Button x:Name="btnLogin" Content="Log In" FontSize="30" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="540,410,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="60" Width="391" Click="btnLogin_Click"/>
     </Grid>
 </Window>
