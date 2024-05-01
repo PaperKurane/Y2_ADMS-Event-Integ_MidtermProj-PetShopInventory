@@ -48,13 +48,11 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                     {
                         if (s.Employee_Password == tbPassword.Text)
                         {
-                            string messageString = $"Login complete.";
                             //if (s. == null)
                             //    messageString += $" Welcome {s.LoginName}!";
                             //else
                             //    messageString += $" Welcome back {s.LoginName}! Havent seen you since {s.LoginDate}";
 
-                            MessageBox.Show(messageString);
                             //s.LoginDate = DateTime.Now;
 
                             Employee employ = new Employee();
@@ -72,8 +70,9 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
             if (flag)
             {
-                // logic for logging in if flag is true
-                MessageBox.Show("You should now be logged in");
+                PetChestMainMenu w = new PetChestMainMenu(tbUsername.Text, _dbConn);
+                w.Show();
+                this.Close();
             }
         }
     }
