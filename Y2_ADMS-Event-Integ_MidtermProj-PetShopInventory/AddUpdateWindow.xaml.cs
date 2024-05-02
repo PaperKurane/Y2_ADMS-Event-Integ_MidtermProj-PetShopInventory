@@ -30,5 +30,45 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
             lbWindowTitle.Content = "Adding a New Entry to the " + tableName + " table...";
         }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TableDecider()
+        {
+
+        }
+
+        private void Pets()
+        {
+
+        }
+
+        private void Products()
+        {
+
+        }
+
+        private void Medical_Summary()
+        {
+
+        }
+
+        private void Employees()
+        {
+
+        }
+
+        private void Logs()
+        {
+
+        }
     }
 }
