@@ -22,29 +22,34 @@
         <Image x:Name="imgElementPaws" Source="AppAssets\element-paws.png" Margin="-61,179,0,0" HorizontalAlignment="Left" Width="442" Height="464" VerticalAlignment="Top" Opacity="0.525"/>
         <Image x:Name="imgElementTopWave" Source="AppAssets\wavetop.png" Margin="0,1,0,0" Height="320" VerticalAlignment="Top" HorizontalAlignment="Left" Width="317"/>
         <Image x:Name="imgElementBottomWave"  Source="AppAssets\wavebottom.png" Margin="0,316,0,0" HorizontalAlignment="Left" Width="317" Height="330" VerticalAlignment="Top"/>
-        <Label x:Name="lbAppTitle" Content="Pet Chest" FontFamily="Segoe UI SemiBold" FontSize="36" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="128,25,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="75" Width="179"/>
-        <Image x:Name="imgElementPetChestLogo" Source="AppAssets\Pet Chest Transparent.png" Margin="18,10,0,0" HorizontalAlignment="Left" Width="105" Height="110" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="lbAppTitle" Content="Pet Chest" FontFamily="Segoe UI SemiBold" FontSize="36" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="128,19,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="75" Width="179"/>
+        <Image x:Name="imgElementPetChestLogo" Source="AppAssets\Pet Chest Transparent.png" Margin="18,4,0,0" HorizontalAlignment="Left" Width="105" Height="110" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+        <!--#endregion-->
+
+        <!--#region Sidebar Buttons-->
+        <Button x:Name="btnProducts" Visibility="Visible" Content="Products" HorizontalContentAlignment="Left" FontSize="28" Margin="43,181,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="234" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="sdbr_btn_click"/>
+        <Button x:Name="btnPets" Visibility="Visible" Content="Pets" HorizontalContentAlignment="Left" FontSize="28" Margin="43,125,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="234" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="sdbr_btn_click"/>
+        <Button x:Name="btnMedSum" Visibility="Visible" Content="Medical Summary" HorizontalContentAlignment="Left" FontSize="28" Margin="43,240,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="234" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="sdbr_btn_click"/>
+        <Button x:Name="btnEmployees" Visibility="Visible" Content="Employees" HorizontalContentAlignment="Left" FontSize="28" Margin="43,299,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="234" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="sdbr_btn_click"/>
+        <Button x:Name="btnLogs" Visibility="Visible" Content="Logs" HorizontalContentAlignment="Left" FontSize="28" Margin="43,360,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="234" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="sdbr_btn_click"/>
+
 
         <Button x:Name="btnLogout" Content="Log Out " HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="26" Margin="18,564,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="172" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="Button_Click" Height="52"/>
         <Image x:Name="imgLogout" Source="AppAssets/logout.png" Margin="26,568,0,0" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
         <!--#endregion-->
 
-        <!--#region Sidebar Buttons-->
-        <Button x:Name="btnProducts" Visibility="Visible" Content="Products" HorizontalContentAlignment="Left" FontSize="28" Margin="43,181,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="234" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
-        <Button x:Name="btnPets" Visibility="Visible" Content="Pets" HorizontalContentAlignment="Left" FontSize="28" Margin="43,125,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="234" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
-        <Button x:Name="btnMedSum" Visibility="Visible" Content="Medical Summary" HorizontalContentAlignment="Left" FontSize="28" Margin="43,240,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="234" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
-        <!--#endregion-->
-        
-        
+
         <!--#region Tables-->
-        
+        <DataGrid x:Name="dgMainTable" FontSize="14" FontFamily="Segoe UI" CanUserResizeRows="False" CanUserResizeColumns="False" AutoGenerateColumns="True" Height="501" VerticalAlignment="Top" Margin="347,81,0,0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Width="812"/>
+
         <!--#endregion-->
-        
-        
+
+
         <!--#region Borderlines-->
         <Rectangle x:Name="rBorderReference" HorizontalAlignment="Center" Height="23" Margin="0,636,0,0" VerticalAlignment="Top" Width="1200" Fill="Black" Stroke="Black"/>
         <Rectangle x:Name="rBorderReferenceVertical" HorizontalAlignment="Left" Height="658" Margin="1186,0,0,0" VerticalAlignment="Center" Width="14" Fill="Black" Stroke="Black"/>
         <Rectangle x:Name="rBorderReferenceTop" Stroke="Black" Fill="Black" Height="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1193"/>
+        <!--<ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Height="485" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158" Margin="347,86,0,0"/>-->
         <!--endregion-->
     </Grid>
 </Window>
