@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PetCenter" Class="PetChestConnDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-4K3JKIQ\SQLEXPRESS01;Initial Catalog=PetCenter;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.Properties.Settings" SettingsPropertyName="PetCenterConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PetChest" Class="PetChestConnDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-4K3JKIQ\SQLEXPRESS01;Initial Catalog=PetChest;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.Properties.Settings" SettingsPropertyName="PetChestConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Employees" Member="Employees">
     <Type Name="Employee">
       <Column Name="Employee_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -8,7 +8,9 @@
       <Column Name="EmployeeRole_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="EmployeeStatus_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Employee_Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Last_Login" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="Employee_Medical_Summary" Member="Medical_Summaries" ThisKey="Employee_ID" OtherKey="Employee_ID" Type="Medical_Summary" />
+      <Association Name="Employee_Log" Member="Logs" ThisKey="Employee_ID" OtherKey="Login_ID" Type="Log" />
     </Type>
   </Table>
   <Table Name="dbo.Pets" Member="Pets">
@@ -24,6 +26,16 @@
       <Association Name="Pet_Medical_Summary" Member="Medical_Summaries" ThisKey="Pet_ID" OtherKey="Pet_ID" Type="Medical_Summary" />
     </Type>
   </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product">
+      <Column Name="Product_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Product_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PetType_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductType_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Product_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.[Medical Summary]" Member="Medical_Summaries">
     <Type Name="Medical_Summary">
       <Column Name="MedSum_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -37,21 +49,12 @@
       <Association Name="Pet_Medical_Summary" Member="Pet" ThisKey="Pet_ID" OtherKey="Pet_ID" Type="Pet" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Products" Member="Products">
-    <Type Name="Product">
-      <Column Name="Product_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Product_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PetType_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ProductType_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Product_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.Logs" Member="Logs">
     <Type Name="Log">
       <Column Name="Log_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="LoginID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Login_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_Log" Member="Employee" ThisKey="Login_ID" OtherKey="Employee_ID" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -29,7 +29,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         {
             InitializeComponent();
 
-            _dbConn = new PetChestConnDataContext(Properties.Settings.Default.PetCenterConnectionString);
+            _dbConn = new PetChestConnDataContext(Properties.Settings.Default.PetChestConnectionString);
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)

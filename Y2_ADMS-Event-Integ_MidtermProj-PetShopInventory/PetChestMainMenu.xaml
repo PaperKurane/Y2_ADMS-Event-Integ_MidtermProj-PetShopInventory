@@ -11,7 +11,7 @@
         <Image x:Name="imgBackgroundWave" Source="AppAssets\loginscreenwave-background.png" Margin="25,-16,0,0" HorizontalAlignment="Left" Width="1274" Height="664" VerticalAlignment="Top"/>
 
         <TextBox x:Name="tbSearchBar" TextWrapping="Wrap" Text=" Search" FontSize="24" FontFamily="Segoe UI" Width="633" Height="37" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="347,25,0,0" BorderBrush="Black" Foreground="#BF000000"/>
-        <Button x:Name="btnAdd" Content="Add" FontSize="22" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="1003,25,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="37" Width="156" BorderThickness="2" BorderBrush="Black"/>
+        <Button x:Name="btnAdd" Content="Add" FontSize="22" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="1003,25,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="37" Width="156" BorderThickness="2" BorderBrush="Black" Click="btnAdd_Click"/>
 
         <Rectangle x:Name="rStatusMessageBG" Height="40" Margin="314,596,0,0" HorizontalAlignment="Left" Width="872" VerticalAlignment="Top" StrokeThickness="2" Fill="#FFF9C4" Stroke="Black"/>
         <Label x:Name="lbStatusMessage" Content="Status Message Here" FontSize="20" FontFamily="Segoe UI" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="325,594,0,0" HorizontalAlignment="Left" Width="856" Height="42" VerticalAlignment="Top"/>
@@ -34,8 +34,8 @@
         <Button x:Name="btnLogs" Visibility="Visible" Content="Logs" HorizontalContentAlignment="Left" FontSize="28" Margin="43,360,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="234" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="sdbr_btn_click"/>
 
 
-        <Button x:Name="btnLogout" Content="Log Out " HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="26" Margin="18,564,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="172" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="Button_Click" Height="52"/>
         <Image x:Name="imgLogout" Source="AppAssets/logout.png" Margin="26,568,0,0" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
+        <Button x:Name="btnLogout" Content="Log Out " HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="26" Margin="18,564,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="172" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnLogout_Click" Height="52"/>
         <!--#endregion-->
 
 

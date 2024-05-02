@@ -21,6 +21,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     {
         PetChestConnDataContext _dbConn = null;
         string _currentUser = "";
+        string _currentTable = "";
 
         public PetChestMainMenu()
         {
@@ -33,6 +34,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
             _currentUser = userName;
             _dbConn = connection;
+
+            lbStatusMessage.Content = "Welcome to the system " + userName + "!";
         }
 
         private void sdbr_btn_click(object sender, RoutedEventArgs e)
@@ -64,6 +67,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                     break;
             }
 
+            string[] tableName = button.Split(new string[] { "btn" }, StringSplitOptions.None);
+            _currentTable = tableName[1];
             dgMainTable.ItemsSource = table.ToList();
         }
 
@@ -82,9 +87,21 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult mbr = MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if(mbr == MessageBoxResult.Yes)
+            {
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
+            }
+        }
 
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddUpdateWindow auw = new AddUpdateWindow(_currentTable);
+            auw.Show();
         }
     }
 }
