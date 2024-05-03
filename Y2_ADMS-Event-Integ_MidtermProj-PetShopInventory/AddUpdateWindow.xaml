@@ -63,7 +63,7 @@
             <!--region Medical Summary Table-->
             <Label x:Name="lbMedSumPetID" Content="Pet ID" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
             <TextBox x:Name="tbMedSumPetID" HorizontalAlignment="Left" Margin="30,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="229" Height="35" FontFamily="Segoe UI" FontSize="20"/>
-            
+
             <Label x:Name="lbMedSumPhysical" Content="Physical Exam" HorizontalAlignment="Left" Margin="24,180,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
             <ComboBox x:Name="cbMedSumPhysical" Width="150" HorizontalAlignment="Left" Margin="30,225,0,0" Height="34" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="20"/>
 
@@ -75,7 +75,10 @@
 
             <Label x:Name="lbMedSumBlood" Content="Blood Test" HorizontalAlignment="Left" Margin="241,269,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
             <ComboBox x:Name="cbMedSumBlood" Width="150" HorizontalAlignment="Left" Margin="247,314,0,0" Height="34" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="20"/>
-           
+
+            <Label x:Name="lbMedSumDate" Content="Last Updated" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="467,91,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
+            <Button x:Name="btnMedSumDate" Content="yyyy-MM-dd" FontSize="20" FontFamily="Segoe UI" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="492,136,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="35" Width="185" BorderThickness="1" BorderBrush="Black"/>
+            <Calendar x:Name="clndrDate" Visibility="Visible" Margin="484,176,0,0" HorizontalAlignment="Left" Width="201" Height="177" VerticalAlignment="Top"/>
             <!--#endregion-->
         </Grid>
 
