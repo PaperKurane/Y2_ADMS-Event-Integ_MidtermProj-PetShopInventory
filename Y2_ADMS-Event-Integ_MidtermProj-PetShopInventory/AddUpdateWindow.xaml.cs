@@ -29,6 +29,13 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             InitializeComponent();
 
             lbWindowTitle.Content = "Adding a New Entry to the " + tableName + " table...";
+
+            switch (tableName)
+            {
+                case "Pets":
+                    Pets();
+                    break;
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -48,7 +55,15 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void Pets()
         {
+            cbPetsPetType.Items.Add("Dog");
+            cbPetsPetType.Items.Add("Cat");
 
+            cbPetsPetSex.Items.Add("Male");
+            cbPetsPetSex.Items.Add("Female");
+
+            cbPetsPetStatus.Items.Add("Available");
+            cbPetsPetStatus.Items.Add("Reserved");
+            cbPetsPetStatus.Items.Add("Sold");
         }
 
         private void Products()

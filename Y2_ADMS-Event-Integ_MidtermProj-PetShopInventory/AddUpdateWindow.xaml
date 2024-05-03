@@ -45,6 +45,30 @@
         <Button x:Name="btnConfirm" Content="Add" FontSize="28" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="259,486,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="49" Width="198" BorderThickness="2" BorderBrush="Black" Click="btnConfirm_Click"/>
 
 
+
+        <Label x:Name="lbPetsPetName" Content="Pet Name" HorizontalAlignment="Left" Margin="24,86,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
+        <TextBox x:Name="tbPetsPetName" HorizontalAlignment="Left" Margin="30,131,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="368" Height="35" FontFamily="Segoe UI" FontSize="20"/>
+
+        <Label x:Name="lbPetsPetType" Content="Pet Type" HorizontalAlignment="Left" Margin="24,175,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
+        <ComboBox x:Name="cbPetsPetType" Width="150" HorizontalAlignment="Left" Margin="30,220,0,0" Height="34" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="20"/>
+
+        <Label x:Name="lbPetsPetBreed" Content="Breed" HorizontalAlignment="Left" Margin="24,264,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="44" Foreground="Black"/>
+        <TextBox x:Name="tbPetsPetBreed" HorizontalAlignment="Left" Margin="30,309,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="368" Height="34" FontFamily="Segoe UI" FontSize="20"/>
+
+        <Label x:Name="lbPetsPetAge" Content="Age" HorizontalAlignment="Left" Margin="24,353,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
+        <TextBox x:Name="tbPetsPetAge" HorizontalAlignment="Left" Margin="30,398,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="151" Height="34" FontFamily="Segoe UI" FontSize="20"/>
+
+        <Label x:Name="lbPetsPetSex" Content="Pet Sex" HorizontalAlignment="Left" Margin="467,86,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
+        <ComboBox x:Name="cbPetsPetSex" Width="150" HorizontalAlignment="Left" Margin="473,131,0,0" Height="34" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="20"/>
+
+        <Label x:Name="lbPetsPetPrice" Content="Pet Price" HorizontalAlignment="Left" Margin="467,175,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
+        <TextBox x:Name="tbPetsPetPrice" HorizontalAlignment="Left" Margin="473,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="229" Height="34" FontFamily="Segoe UI" FontSize="20"/>
+
+        <Label x:Name="lbPetsPetStatus" Content="Pet Status" HorizontalAlignment="Left" Margin="467,264,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
+        <ComboBox x:Name="cbPetsPetStatus" Width="150" HorizontalAlignment="Left" Margin="473,309,0,0" Height="34" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="20"/>
+
+
+
         <Rectangle x:Name="rBorderReference" HorizontalAlignment="Center" Margin="0,561,0,0" Width="900" Fill="Black" Stroke="Black" Height="23" VerticalAlignment="Top"/>
         <Rectangle x:Name="rBorderReferenceVertical" HorizontalAlignment="Left" Height="684" Margin="886,0,0,0" VerticalAlignment="Center" Width="14" Fill="Black" Stroke="Black"/>
     </Grid>

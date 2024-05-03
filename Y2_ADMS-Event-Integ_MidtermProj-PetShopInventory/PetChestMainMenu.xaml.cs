@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,10 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     public partial class PetChestMainMenu : Window
     {
         PetChestConnDataContext _dbConn = null;
-        string _currentUser = "";
+        string _defaultTable = "btnPets";
         string _currentTable = "";
+
+        string _currentUser = "";
 
         public PetChestMainMenu()
         {
@@ -36,11 +39,11 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             _dbConn = connection;
 
             lbStatusMessage.Content = "Welcome to the system " + userName + "!";
+            RetrieveDefaultTable();
         }
 
-        private void sdbr_btn_click(object sender, RoutedEventArgs e)
+        private void RetrieveTable(string button)
         {
-            string button = ((Button)sender).Name.ToString();
             IQueryable<object> table = null;
 
             switch (button)
@@ -72,19 +75,15 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             dgMainTable.ItemsSource = table.ToList();
         }
 
-        private void LoadTable(string tableName)
+        private void RetrieveDefaultTable()
         {
-            try
-            {
-                var table = from employee in _dbConn.Employees
-                                select employee;
+            RetrieveTable(_defaultTable);
+        }
 
-                dgMainTable.ItemsSource = table.ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+        private void sdbr_btn_click(object sender, RoutedEventArgs e)
+        {
+            string button = ((Button)sender).Name.ToString();
+            RetrieveTable(button);
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
@@ -101,7 +100,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddUpdateWindow auw = new AddUpdateWindow(_currentTable);
-            auw.Show();
+            auw.Owner = this;
+            auw.ShowDialog();
         }
     }
 }
