@@ -101,7 +101,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         {
             AddUpdateWindow auw = new AddUpdateWindow(_currentTable);
             auw.Owner = this;
-            auw.ShowDialog();
+            auw.ShowDialog();   
         }
     }
 }
