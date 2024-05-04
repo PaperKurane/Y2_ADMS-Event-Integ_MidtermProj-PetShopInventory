@@ -15,7 +15,7 @@
         <Button x:Name="btnCancel" Content="Cancel" FontSize="28" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="27,393,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="49" Width="199" BorderThickness="2" BorderBrush="Black" Click="btnCancel_Click"/>
         <Button x:Name="btnConfirm" Content="Add" FontSize="28" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="255,393,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="49" Width="198" BorderThickness="2" BorderBrush="Black" Click="btnConfirm_Click"/>
 
-        <Grid Visibility="Collapsed">
+        <Grid x:Name="PetsTable" Visibility="Collapsed">
             <!--region Pets Table-->
             <Label x:Name="lbPetsPetName" Content="Pet Name" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
             <TextBox x:Name="tbPetsPetName" HorizontalAlignment="Left" Margin="30,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="368" Height="35" FontFamily="Segoe UI" FontSize="20"/>
@@ -40,7 +40,7 @@
             <!--#endregion-->
         </Grid>
 
-        <Grid Visibility="Collapsed">
+        <Grid x:Name="ProductsTable"  Visibility="Collapsed">
             <!--region Products Table-->
             <Label x:Name="lbProductsProductName" Content="Product Name" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
             <TextBox x:Name="tbProductsProductName" HorizontalAlignment="Left" Margin="30,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="368" Height="35" FontFamily="Segoe UI" FontSize="20"/>
@@ -59,7 +59,7 @@
             <!--#endregion-->
         </Grid>
 
-        <Grid Visibility="Visible">
+        <Grid x:Name="MedSumTable" Visibility="Collapsed">
             <!--region Medical Summary Table-->
             <Label x:Name="lbMedSumPetID" Content="Pet ID" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
             <TextBox x:Name="tbMedSumPetID" HorizontalAlignment="Left" Margin="30,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="229" Height="35" FontFamily="Segoe UI" FontSize="20"/>
@@ -77,8 +77,8 @@
             <ComboBox x:Name="cbMedSumBlood" Width="150" HorizontalAlignment="Left" Margin="247,314,0,0" Height="34" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="20"/>
 
             <Label x:Name="lbMedSumDate" Content="Last Updated" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="467,91,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
-            <Button x:Name="btnMedSumDate" Content="yyyy-MM-dd" FontSize="20" FontFamily="Segoe UI" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="492,136,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="35" Width="185" BorderThickness="1" BorderBrush="Black"/>
-            <Calendar x:Name="clndrDate" Visibility="Visible" Margin="484,176,0,0" HorizontalAlignment="Left" Width="201" Height="177" VerticalAlignment="Top"/>
+            <Button x:Name="btnMedSumDate" Content="yyyy-MM-dd" FontSize="20" FontFamily="Segoe UI" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="492,136,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="35" Width="185" BorderThickness="1" BorderBrush="Black" Click="btnMedSumDate_Click"/>
+            <Calendar x:Name="clndrDate" Visibility="Visible" Margin="484,176,0,0" HorizontalAlignment="Left" Width="201" Height="177" VerticalAlignment="Top" SelectedDatesChanged="clndrDate_SelectedDatesChanged"/>
             <!--#endregion-->
         </Grid>
 

@@ -35,11 +35,18 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                 case "Pets":
                     Pets();
                     break;
+                case "Products":
+                    Products(); 
+                    break;
+                case "MedSum":
+                    Medical_Summary(); 
+                    break;
             }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            DisableAUWInterface();
             this.Close();
         }
 
@@ -55,6 +62,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void Pets()
         {
+            PetsTable.Visibility = Visibility.Visible;
+
             cbPetsPetType.Items.Add("Dog");
             cbPetsPetType.Items.Add("Cat");
 
@@ -68,22 +77,63 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void Products()
         {
+            ProductsTable.Visibility = Visibility.Visible;
 
+            cbProductsPetType.Items.Add("Dog");
+            cbProductsPetType.Items.Add("Cat");
+
+            cbProductsProductType.Items.Add("Food");
+            cbProductsProductType.Items.Add("Toys");
+            cbProductsProductType.Items.Add("Grooming");
+            cbProductsProductType.Items.Add("Accessories");
         }
 
         private void Medical_Summary()
         {
+            MedSumTable.Visibility = Visibility.Visible;
 
+            cbMedSumPhysical.Items.Add("Positive");
+            cbMedSumPhysical.Items.Add("Negative");
+            
+            cbMedSumFecal.Items.Add("Positive");
+            cbMedSumFecal.Items.Add("Negative");
+
+            cbMedSumBlood.Items.Add("Positive");
+            cbMedSumBlood.Items.Add("Negative");
+
+            cbMedSumParasite.Items.Add("Positive");
+            cbMedSumParasite.Items.Add("Negative");
+
+        }
+
+        private void btnMedSumDate_Click(object sender, RoutedEventArgs e)
+        {
+            if (clndrDate.Visibility == Visibility.Collapsed)
+                clndrDate.Visibility = Visibility.Visible;
+            else
+                clndrDate.Visibility = Visibility.Collapsed;
+        }
+
+        private void clndrDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime selectedDate = clndrDate.SelectedDate.GetValueOrDefault();
+
+            btnMedSumDate.Content = selectedDate.ToShortDateString();
+
+            clndrDate.Visibility = Visibility.Collapsed;
         }
 
         private void Employees()
         {
-
+            //EmployeesTable.Visibility = Visibility.Visible;
         }
 
-        private void Logs()
+        private void DisableAUWInterface()
         {
-
+            PetsTable.Visibility = Visibility.Collapsed;
+            ProductsTable.Visibility = Visibility.Collapsed;
+            MedSumTable.Visibility = Visibility.Collapsed;
+            //EmployeesTable.Visibility = Visibility.Collapsed;
         }
     }
 }
