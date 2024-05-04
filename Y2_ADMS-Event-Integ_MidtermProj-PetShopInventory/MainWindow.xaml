@@ -12,8 +12,8 @@
 
         <Rectangle x:Name="rSidebar" HorizontalAlignment="Left" Height="636" Stroke="Black" VerticalAlignment="Top" Width="320" Fill="#FDEDE5" StrokeThickness="2"/>
         <Image Source="AppAssets\element-paws.png" Margin="-61,179,0,0" HorizontalAlignment="Left" Width="442" Height="464" VerticalAlignment="Top"/>
-        <Image Source="AppAssets\wavetop.png" Margin="0,1,0,0" Height="320" VerticalAlignment="Top" HorizontalAlignment="Left" Width="320"/>
-        <Image Source="AppAssets\wavebottom.png" Margin="0,316,0,0" HorizontalAlignment="Left" Width="320" Height="330" VerticalAlignment="Top"/>
+        <!--<Image Source="AppAssets\wavetop.png" Margin="0,1,0,0" Height="320" VerticalAlignment="Top" HorizontalAlignment="Left" Width="320"/>
+        <Image Source="AppAssets\wavebottom.png" Margin="0,316,0,0" HorizontalAlignment="Left" Width="320" Height="330" VerticalAlignment="Top"/>-->
         <Label x:Name="lbAppTitle" Content="Pet Chest" FontFamily="Segoe UI SemiBold" FontSize="48" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="28,82,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="86" Width="264"/>
         <Image Source="AppAssets\Pet Chest Transparent.png" Margin="62,183,0,0" HorizontalAlignment="Left" Width="196" Height="204" VerticalAlignment="Top"/>
 

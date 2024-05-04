@@ -41,6 +41,9 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                 case "MedSum":
                     Medical_Summary(); 
                     break;
+                case "Employees":
+                    Employees();
+                    break;
             }
         }
 
@@ -125,7 +128,14 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void Employees()
         {
-            //EmployeesTable.Visibility = Visibility.Visible;
+            EmployeesTable.Visibility = Visibility.Visible;
+
+            cbEmployeesEmployeeRole.Items.Add("Manager");
+            cbEmployeesEmployeeRole.Items.Add("Staff");
+
+            cbEmployeesEmployeeStatus.Items.Add("Active");
+            cbEmployeesEmployeeStatus.Items.Add("On Leave");
+            cbEmployeesEmployeeStatus.Items.Add("Terminated");
         }
 
         private void DisableAUWInterface()
@@ -133,7 +143,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             PetsTable.Visibility = Visibility.Collapsed;
             ProductsTable.Visibility = Visibility.Collapsed;
             MedSumTable.Visibility = Visibility.Collapsed;
-            //EmployeesTable.Visibility = Visibility.Collapsed;
+            EmployeesTable.Visibility = Visibility.Collapsed;
         }
     }
 }
