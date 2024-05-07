@@ -19,14 +19,18 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     /// </summary>
     public partial class AddUpdateWindow : Window
     {
+        PetChestConnDataContext _dbConn = null;
+
         public AddUpdateWindow()
         {
             InitializeComponent();
         }
 
-        public AddUpdateWindow(string tableName)
+        public AddUpdateWindow(string tableName, PetChestConnDataContext connection)
         {
             InitializeComponent();
+
+            _dbConn = connection;
 
             lbWindowTitle.Content = "Adding a New Entry to the " + tableName + " table...";
 

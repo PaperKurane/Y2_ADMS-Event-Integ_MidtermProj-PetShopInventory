@@ -111,7 +111,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddUpdateWindow auw = new AddUpdateWindow(_currentTable);
+            AddUpdateWindow auw = new AddUpdateWindow(_currentTable, _dbConn);
             auw.Owner = this;
             auw.ShowDialog();   
         }
@@ -142,7 +142,9 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         {
             IEnumerable<object> filteredData = null;
             int searchQueryInt;
+            DateTime searchDateTime;
             bool isNumeric = int.TryParse(searchQuery, out searchQueryInt);
+            bool isDateTime = DateTime.TryParse(searchQuery, out searchDateTime);
 
             switch (_currentTable)
             {
@@ -150,28 +152,40 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                     filteredData = from item in _dbConn.petDisplays
                                    where item.Pet_Name.ToLower().Contains(searchQuery) ||
                                          item.Pet_Breed.ToLower().Contains(searchQuery) ||
-                                         (isNumeric && item.Pet_Age == searchQueryInt) ||
+                                         (isNumeric && item.Pet_Age.ToString().Contains(searchQuery)) ||
                                          item.Pet_Sex.ToLower().Contains(searchQuery) ||
-                                         (isNumeric && item.Pet_Price == searchQueryInt) ||
+                                         (isNumeric && item.Pet_Price.ToString().Contains(searchQuery)) ||
                                          item.Pet_Status.ToLower().Contains(searchQuery)
                                    select item;
                     break;
                 case "Products":
-
+                    filteredData = from item in _dbConn.productDisplays
+                                   where item.Product_Name.ToLower().Contains(searchQuery) ||
+                                         item.Pet_Type.ToLower().Contains(searchQuery) ||
+                                         item.Product_Type.ToLower().Contains(searchQuery) ||
+                                         (isNumeric && item.Product_Stock.ToString().Contains(searchQuery)) ||
+                                         (isNumeric && item.Product_Price.ToString().Contains(searchQuery))
+                                   select item;
                     break;
                 case "MedSum":
-
+                    filteredData = from item in _dbConn.medicalDisplays
+                                   where item.Pet_Name.ToLower().Contains(searchQuery) ||
+                                         item.Physical_Exam.ToLower().Contains(searchQuery) ||
+                                         item.Fecal_Test.ToLower().Contains(searchQuery) ||
+                                         item.Blood_Test.ToLower().Contains(searchQuery) ||
+                                         item.Parasite_Exam.ToLower().Contains(searchQuery) ||
+                                         (isNumeric && item.Last_Checkup.ToString().Contains(searchQuery))
+                                   select item;
                     break;
                 case "Employees":
-                    filteredData = from item in _dbConn.Employees
-                    where item.Employee_Name.ToLower().Contains(searchQuery) ||
-                          item.Employee_Email.ToLower().Contains(searchQuery) ||
-                          item.EmployeeRole_ID.ToLower().Contains(searchQuery) ||
-                          item.EmployeeStatus_ID.ToLower().Contains(searchQuery)
-                    select item;
+
                     break;
                 case "Logs":
-
+                    filteredData = from item in _dbConn.Logs
+                                   where (isNumeric && item.Log_ID.ToString().Contains(searchQuery)) ||
+                                         item.Login_ID.ToLower().Contains(searchQuery) ||
+                                         (isNumeric && item.Login_Date.ToString().Contains(searchQuery))
+                                   select item;
                     break;
             }
 
