@@ -49,15 +49,15 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             switch (button)
             {
                 case "btnPets":
-                    table = from tb in _dbConn.Pets
+                    table = from tb in _dbConn.petDisplays
                             select (object)tb;
                     break;
                 case "btnProducts":
-                    table = from tb in _dbConn.Products
+                    table = from tb in _dbConn.productDisplays
                             select tb;
                     break;
                 case "btnMedSum":
-                    table = from tb in _dbConn.Medical_Summaries
+                    table = from tb in _dbConn.medicalDisplays
                             select tb;
                     break;
                 case "btnEmployees":

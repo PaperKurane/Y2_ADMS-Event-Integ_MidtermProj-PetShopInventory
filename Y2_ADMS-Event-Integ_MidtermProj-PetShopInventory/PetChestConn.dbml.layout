@@ -2,55 +2,41 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="PetChestConn">
   <DataContextMoniker Name="/PetChestConnDataContext" />
   <nestedChildShapes>
-    <classShape Id="403f95d6-17ce-49fd-afad-5c4e2a35611f" absoluteBounds="3.125, 3.5, 2, 2.1554996744791666">
+    <classShape Id="469c801c-dc6f-43fe-ade3-bc6ee96d33c4" absoluteBounds="0.5, 2.375, 2, 1.9631982421875">
+      <DataClassMoniker Name="/PetChestConnDataContext/medicalDisplay" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50e3f9d5-54a2-4f7f-81c9-9a814e396e73" absoluteBounds="0.51500000000000012, 2.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5f7dc376-effb-4990-b86d-5121b1ba89be" absoluteBounds="2.875, 2.375, 2, 1.9631982421875">
+      <DataClassMoniker Name="/PetChestConnDataContext/petDisplay" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4b087024-df0a-4413-83c5-d678ac4583eb" absoluteBounds="2.8899999999999997, 2.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e0ce1425-37a9-4b66-a5b3-a04fb9787f0c" absoluteBounds="0.5, 4.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/PetChestConnDataContext/productDisplay" />
+      <nestedChildShapes>
+        <elementListCompartment Id="97589da6-c0a8-4af9-92f2-7c586e1e4cc9" absoluteBounds="0.51500000000000012, 5.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6988a621-2c2a-4113-8839-822117849453" absoluteBounds="2.875, 4.625, 2, 2.1554996744791666">
       <DataClassMoniker Name="/PetChestConnDataContext/Employee" />
       <nestedChildShapes>
-        <elementListCompartment Id="7a06df32-d865-4c82-8e11-4c95200a75d7" absoluteBounds="3.14, 3.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="495945ed-7c59-4201-8a57-ff34ddd0dd38" absoluteBounds="2.8899999999999997, 5.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e5d77670-5552-4508-88f9-0db1bfdf360d" absoluteBounds="0.625, 0.5, 2, 2.3478011067708335">
-      <DataClassMoniker Name="/PetChestConnDataContext/Pet" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d306f7de-d1bb-435c-b7d4-614ed83807b9" absoluteBounds="0.64, 0.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="f692bfb4-e849-4b32-a555-64e0a1c516d9" absoluteBounds="3.125, 0.5, 2, 1.9631982421875">
-      <DataClassMoniker Name="/PetChestConnDataContext/Product" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7f0d86f7-9cf4-48cc-8ad5-1d62e50afb75" absoluteBounds="3.1399999999999997, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="bc089c00-f389-4db3-a00b-aaf6c51697cb" absoluteBounds="0.625, 3.5, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/PetChestConnDataContext/Medical_Summary" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6f855bd6-ad18-4d2c-afc4-28aef38ef94e" absoluteBounds="0.63999999999999968, 3.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(3.125 : 4.57774983723958); (2.625 : 4.57774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/PetChestConnDataContext/Employee/Employee_Medical_Summary" />
-      <nodes>
-        <classShapeMoniker Id="403f95d6-17ce-49fd-afad-5c4e2a35611f" />
-        <classShapeMoniker Id="bc089c00-f389-4db3-a00b-aaf6c51697cb" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.625 : 2.84780110677083); (1.625 : 3.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/PetChestConnDataContext/Pet/Pet_Medical_Summary" />
-      <nodes>
-        <classShapeMoniker Id="e5d77670-5552-4508-88f9-0db1bfdf360d" />
-        <classShapeMoniker Id="bc089c00-f389-4db3-a00b-aaf6c51697cb" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="a3dea916-99c1-4ba0-bed8-c4e24f617e81" absoluteBounds="0.625, 6.25, 2, 1.3862939453125">
+    <classShape Id="f17e82e2-0497-4fce-b7fc-d4d5aa4a96e9" absoluteBounds="5.125, 4.625, 2, 1.3862939453125">
       <DataClassMoniker Name="/PetChestConnDataContext/Log" />
       <nestedChildShapes>
-        <elementListCompartment Id="d8c92d93-964a-491f-91c0-0e3e8f549eaf" absoluteBounds="0.64000000000000012, 6.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d33ffd02-e4f5-4b57-b7de-5e9af05d49d7" absoluteBounds="5.1400000000000006, 5.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.125 : 5.65549967447917); (2.625 : 6.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.875 : 5.31814697265625); (5.125 : 5.31814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PetChestConnDataContext/Employee/Employee_Log" />
       <nodes>
-        <classShapeMoniker Id="403f95d6-17ce-49fd-afad-5c4e2a35611f" />
-        <classShapeMoniker Id="a3dea916-99c1-4ba0-bed8-c4e24f617e81" />
+        <classShapeMoniker Id="6988a621-2c2a-4113-8839-822117849453" />
+        <classShapeMoniker Id="f17e82e2-0497-4fce-b7fc-d4d5aa4a96e9" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
