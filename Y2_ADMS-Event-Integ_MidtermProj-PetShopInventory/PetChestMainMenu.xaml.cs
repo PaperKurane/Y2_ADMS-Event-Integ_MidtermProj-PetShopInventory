@@ -178,7 +178,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                                    select item;
                     break;
                 case "Employees":
-
+                    // need a view for this
                     break;
                 case "Logs":
                     filteredData = from item in _dbConn.Logs
