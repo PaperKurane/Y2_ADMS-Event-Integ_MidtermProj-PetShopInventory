@@ -95,6 +95,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         private void sdbr_btn_click(object sender, RoutedEventArgs e)
         {
             string button = ((Button)sender).Name.ToString();
+            tbSearchBar.Text = string.Empty;
             RetrieveTable(button);
         }
 
