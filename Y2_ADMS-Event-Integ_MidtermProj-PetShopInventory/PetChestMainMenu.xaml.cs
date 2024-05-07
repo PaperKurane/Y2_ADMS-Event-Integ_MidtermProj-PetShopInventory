@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Linq;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -38,8 +40,13 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             _currentUser = userName;
             _dbConn = connection;
 
-            lbStatusMessage.Content = "Welcome to the system " + userName + "!";
+            StatusMessageHandler("Welcome to the system " + userName + "!");
             RetrieveDefaultTable();
+        }
+
+        private void StatusMessageHandler(string message)
+        {
+            lbStatusMessage.Content = message;
         }
 
         private void RetrieveTable(string button)
@@ -49,24 +56,29 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             switch (button)
             {
                 case "btnPets":
-                    table = from tb in _dbConn.Pets
+                    table = from tb in _dbConn.petDisplays
                             select (object)tb;
+                    StatusMessageHandler("Now viewing the Pets Table.");
                     break;
                 case "btnProducts":
-                    table = from tb in _dbConn.Products
+                    table = from tb in _dbConn.productDisplays
                             select tb;
+                    StatusMessageHandler("Now viewing the Products Table.");
                     break;
                 case "btnMedSum":
-                    table = from tb in _dbConn.Medical_Summaries
+                    table = from tb in _dbConn.medicalDisplays
                             select tb;
+                    StatusMessageHandler("Now viewing the Medical Summary Table.");
                     break;
                 case "btnEmployees":
                     table = from tb in _dbConn.Employees
                             select (object)tb;
+                    StatusMessageHandler("Now viewing the Employees Table.");
                     break;
                 case "btnLogs":
                     table = from tb in _dbConn.Logs
                             select tb;
+                    StatusMessageHandler("Now viewing the Logs Table.");
                     break;
             }
 
@@ -102,6 +114,68 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             AddUpdateWindow auw = new AddUpdateWindow(_currentTable);
             auw.Owner = this;
             auw.ShowDialog();   
+        }
+
+        private void tbSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchQuery = tbSearchBar.Text.ToLower();
+
+            // Filter the data based on the search query
+            IEnumerable<object> filteredData = SearchTableColumns(searchQuery);
+
+            ObservableCollection<object> dataCollection = new ObservableCollection<object>();
+
+            foreach (var item in filteredData)
+            {
+                dataCollection.Add(item);
+            }
+
+            dgMainTable.ItemsSource = dataCollection;
+
+            if (dgMainTable.Items.Count == 0)
+                StatusMessageHandler("No entries found for " + searchQuery + "...");
+            else
+                StatusMessageHandler("Searching...");
+        }
+
+        private IEnumerable<object> SearchTableColumns(string searchQuery)
+        {
+            IEnumerable<object> filteredData = null;
+            int searchQueryInt;
+            bool isNumeric = int.TryParse(searchQuery, out searchQueryInt);
+
+            switch (_currentTable)
+            {
+                case "Pets":
+                    filteredData = from item in _dbConn.petDisplays
+                                   where item.Pet_Name.ToLower().Contains(searchQuery) ||
+                                         item.Pet_Breed.ToLower().Contains(searchQuery) ||
+                                         (isNumeric && item.Pet_Age == searchQueryInt) ||
+                                         item.Pet_Sex.ToLower().Contains(searchQuery) ||
+                                         (isNumeric && item.Pet_Price == searchQueryInt) ||
+                                         item.Pet_Status.ToLower().Contains(searchQuery)
+                                   select item;
+                    break;
+                case "Products":
+
+                    break;
+                case "MedSum":
+
+                    break;
+                case "Employees":
+                    filteredData = from item in _dbConn.Employees
+                    where item.Employee_Name.ToLower().Contains(searchQuery) ||
+                          item.Employee_Email.ToLower().Contains(searchQuery) ||
+                          item.EmployeeRole_ID.ToLower().Contains(searchQuery) ||
+                          item.EmployeeStatus_ID.ToLower().Contains(searchQuery)
+                    select item;
+                    break;
+                case "Logs":
+
+                    break;
+            }
+
+            return filteredData;
         }
     }
 }

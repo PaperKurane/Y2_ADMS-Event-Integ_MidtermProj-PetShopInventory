@@ -26,8 +26,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-4K3JKIQ\\SQLEXPRESS01;Initial Catalog=PetChest;Integrated Secu" +
-            "rity=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CLOUDCOMPUTER\\SQLEXPRESS;Initial Catalog=PetChest;Integrated Security" +
+            "=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False")]
         public string PetChestConnectionString {
             get {
                 return ((string)(this["PetChestConnectionString"]));

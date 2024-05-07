@@ -10,7 +10,7 @@
     <Grid>
         <Image x:Name="imgBackgroundWave" Source="AppAssets\loginscreenwave-background.png" Margin="25,-16,0,0" HorizontalAlignment="Left" Width="1274" Height="664" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="tbSearchBar" TextWrapping="Wrap" Text=" Search" FontSize="24" FontFamily="Segoe UI" Width="633" Height="37" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="347,25,0,0" BorderBrush="Black" Foreground="#BF000000"/>
+        <TextBox x:Name="tbSearchBar" TextWrapping="Wrap" Text="" FontSize="24" FontFamily="Segoe UI" Width="633" Height="37" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="347,25,0,0" BorderBrush="Black" Foreground="#BF000000" TextChanged="tbSearchBar_TextChanged"/>
         <Button x:Name="btnAdd" Content="Add" FontSize="22" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="1003,25,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="37" Width="156" BorderThickness="2" BorderBrush="Black" Click="btnAdd_Click"/>
 
         <Rectangle x:Name="rStatusMessageBG" Height="40" Margin="314,596,0,0" HorizontalAlignment="Left" Width="872" VerticalAlignment="Top" StrokeThickness="2" Fill="#FFF9C4" Stroke="Black"/>

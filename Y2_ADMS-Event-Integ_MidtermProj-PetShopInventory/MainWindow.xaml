@@ -19,8 +19,8 @@
 
 
         <Label x:Name="lbSignIn" Content="Sign In" FontFamily="Segoe UI SemiBold" FontSize="48" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="540,118,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="86" Width="211"/>
-        <TextBox x:Name="tbUsername" FontFamily="Segoe UI" FontSize="32" HorizontalAlignment="Left" Margin="540,229,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="391" Height="59" BorderBrush="Black" Foreground="Gray" BorderThickness="2"/>
-        <TextBox x:Name="tbPassword" FontFamily="Segoe UI" FontSize="32" HorizontalAlignment="Left" Margin="540,320,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="391" Height="60" BorderBrush="Black" Foreground="Gray" BorderThickness="2"/>
+        <TextBox x:Name="tbUsername" FontFamily="Segoe UI" FontSize="32" HorizontalAlignment="Left" Margin="540,229,0,0" TextWrapping="NoWrap" Text="a" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="391" Height="59" BorderBrush="Black" Foreground="Gray" BorderThickness="2"/>
+        <TextBox x:Name="tbPassword" FontFamily="Segoe UI" FontSize="32" HorizontalAlignment="Left" Margin="540,320,0,0" TextWrapping="NoWrap" Text="a" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="391" Height="60" BorderBrush="Black" Foreground="Gray" BorderThickness="2"/>
         <Button x:Name="btnLogin" Content="Log In" FontSize="30" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="540,410,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="60" Width="391" BorderThickness="2" Click="btnLogin_Click"/>
 
 
