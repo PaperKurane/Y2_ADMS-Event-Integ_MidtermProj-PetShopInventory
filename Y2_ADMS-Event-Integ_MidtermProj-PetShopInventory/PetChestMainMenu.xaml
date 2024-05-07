@@ -9,7 +9,8 @@
         Title="PetChestMainMenu" Height="675" Width="1200" Background="White">
     <Grid>
         <Image x:Name="imgBackgroundWave" Source="AppAssets\loginscreenwave-background.png" Margin="25,-16,0,0" HorizontalAlignment="Left" Width="1274" Height="664" VerticalAlignment="Top"/>
-
+       
+        <Label x:Name="lbSearch" Content="Search" FontFamily="Segoe UI SemiBold" FontSize="30" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="347,16,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="56" Width="106"/>
         <TextBox x:Name="tbSearchBar" TextWrapping="Wrap" Text="" FontSize="24" FontFamily="Segoe UI" Width="522" Height="37" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="458,25,0,0" BorderBrush="Black" Foreground="#BF000000" TextChanged="tbSearchBar_TextChanged"/>
         <Button x:Name="btnAdd" Content="Add" FontSize="22" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="1003,25,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="37" Width="156" BorderThickness="2" BorderBrush="Black" Click="btnAdd_Click"/>
 
@@ -47,7 +48,6 @@
         <Rectangle x:Name="rBorderReference" HorizontalAlignment="Center" Height="23" Margin="0,636,0,0" VerticalAlignment="Top" Width="1200" Fill="Black" Stroke="Black"/>
         <Rectangle x:Name="rBorderReferenceVertical" HorizontalAlignment="Left" Height="658" Margin="1186,0,0,0" VerticalAlignment="Center" Width="14" Fill="Black" Stroke="Black"/>
         <Rectangle x:Name="rBorderReferenceTop" Stroke="Black" Fill="Black" Height="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1193"/>
-        <Label x:Name="lbSearch" Content="Search" FontFamily="Segoe UI SemiBold" FontSize="30" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="347,16,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="56" Width="106"/>
         <!--<ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Height="485" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158" Margin="347,86,0,0"/>-->
         <!--endregion-->
     </Grid>
