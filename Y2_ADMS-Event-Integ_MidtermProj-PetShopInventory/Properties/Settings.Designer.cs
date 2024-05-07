@@ -12,7 +12,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,8 +26,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-4K3JKIQ\\SQLEXPRESS01;Initial Catalog=PetChest;Integrated Secu" +
-            "rity=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-PPNR6BQ\\SQLEXPRESS;Initial Catalog=PetChest;Integrated Securi" +
+            "ty=True;Connect Timeout=30;Encrypt=False;")]
         public string PetChestConnectionString {
             get {
                 return ((string)(this["PetChestConnectionString"]));
