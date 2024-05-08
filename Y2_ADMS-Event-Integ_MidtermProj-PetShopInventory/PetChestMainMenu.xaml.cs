@@ -28,6 +28,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         string _currentTable = "";
         string _currentUser = "";
 
+        SoundSystem sound = new SoundSystem();
+
         public PetChestMainMenu()
         {
             InitializeComponent();
@@ -96,6 +98,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void sdbr_btn_click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             string button = ((Button)sender).Name.ToString();
             tbSearchBar.Text = string.Empty;
             RetrieveTable(button);
@@ -103,6 +107,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             MessageBoxResult mbr = MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if(mbr == MessageBoxResult.Yes)
             {
@@ -114,6 +120,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             AddUpdateWindow auw = new AddUpdateWindow(_currentTable, _dbConn);
             auw.Owner = this;
             auw.ShowDialog();   
@@ -121,6 +129,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void dgMainTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             if (dgMainTable.SelectedItem != null)
             {
                 if (_currentTable == "Pets")

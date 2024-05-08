@@ -26,6 +26,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         public int _rowID = 0;
         private List<string> _rowDetails = new List<string>();
 
+        SoundSystem sound = new SoundSystem();
+
         public AddUpdateWindow(object selectedItem, string tableName, PetChestConnDataContext connection)
         {
             InitializeComponent();
@@ -91,12 +93,16 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             DisableAUWInterface();
             this.Close();
         }
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             if (btnConfirm.Content.ToString() == "Add")
             {
                 switch (_uspNum)
@@ -234,6 +240,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnMedSumDate_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             if (clndrDate.Visibility == Visibility.Collapsed)
                 clndrDate.Visibility = Visibility.Visible;
             else
@@ -242,6 +250,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void clndrDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             DateTime selectedDate = clndrDate.SelectedDate.GetValueOrDefault();
 
             _calendarDate = selectedDate;

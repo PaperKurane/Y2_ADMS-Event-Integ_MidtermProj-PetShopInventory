@@ -24,6 +24,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         PetChestConnDataContext _dbConn = null;
         bool flag = false;
 
+        SoundSystem sound = new SoundSystem();
 
         public MainWindow()
         {
@@ -34,6 +35,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             string messageString = "";
 
             if (tbUsername.Text.Length > 0 && tbPassword.Text.Length > 0)

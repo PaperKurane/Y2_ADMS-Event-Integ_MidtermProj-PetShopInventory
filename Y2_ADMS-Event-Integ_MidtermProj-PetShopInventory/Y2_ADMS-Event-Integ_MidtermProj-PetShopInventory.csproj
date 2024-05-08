@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SoundSystem.cs" />
     <Page Include="AddUpdateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AppAssets\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppAssets\Terraria-UI-Sound.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
