@@ -142,7 +142,10 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
             AddUpdateWindow auw = new AddUpdateWindow(_currentTable, _dbConn);
             auw.Owner = this;
-            auw.ShowDialog();   
+            auw.ShowDialog();
+
+            string message = auw.StatusMessagePasser + _currentTable + " table.";
+            StatusMessageHandler(message);
         }
 
         private void dgMainTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -159,6 +162,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                         AddUpdateWindow auw = new AddUpdateWindow(selectedPet, _currentTable, _dbConn);
                         auw.Owner = this;
                         auw.ShowDialog();
+                        string message = auw.StatusMessagePasser + "Pets Table";
+                        StatusMessageHandler(message);
                     }
                 }
                 else if (_currentTable == "Products")
@@ -169,6 +174,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                         AddUpdateWindow auw = new AddUpdateWindow(selectedProduct, _currentTable, _dbConn);
                         auw.Owner = this;
                         auw.ShowDialog();
+                        string message = auw.StatusMessagePasser + "Products Table";
+                        StatusMessageHandler(message);
                     }
                 }
                 else if (_currentTable == "MedSum")
@@ -179,6 +186,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                         AddUpdateWindow auw = new AddUpdateWindow(selectedMedSum, _currentTable, _dbConn);
                         auw.Owner = this;
                         auw.ShowDialog();
+                        string message = auw.StatusMessagePasser + "Medical Summary Table";
+                        StatusMessageHandler(message);
                     }
                 }
                 else

@@ -28,6 +28,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         SoundSystem sound = new SoundSystem();
 
+        public string StatusMessagePasser { get; set; }
+
         public AddUpdateWindow(object selectedItem, string tableName, PetChestConnDataContext connection)
         {
             InitializeComponent();
@@ -148,6 +150,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                 }
             }
             DisableAUWInterface();
+            StatusMessagePasser = "Value to pass to the other window";
             this.Close();
         }
 
