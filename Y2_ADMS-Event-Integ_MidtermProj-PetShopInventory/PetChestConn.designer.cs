@@ -94,7 +94,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		{
 			get
 			{
-				return this.GetTable<Employee>();
+				return this.GetTable<medicalDisplay>();
 			}
 		}
 		
@@ -320,17 +320,13 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		{
 			get
 			{
-				return this._EmployeeStatus_ID;
+				return this._Physical_Exam;
 			}
 			set
 			{
-				if ((this._EmployeeStatus_ID != value))
+				if ((this._Physical_Exam != value))
 				{
-					this.OnEmployeeStatus_IDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeStatus_ID = value;
-					this.SendPropertyChanged("EmployeeStatus_ID");
-					this.OnEmployeeStatus_IDChanged();
+					this._Physical_Exam = value;
 				}
 			}
 		}
@@ -876,11 +872,11 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		
 		private string _Physical_Exam;
 		
-		private string _Fecal_Test;
+		private string _Employee_Password;
 		
-		private string _Blood_Test;
+		private string _EmployeeRole_ID;
 		
-		private string _Parasite_Exam;
+		private string _EmployeeStatus_ID;
 		
 		private System.DateTime _Last_Checkup;
 		
@@ -909,59 +905,59 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		{
 			get
 			{
-				return this._Physical_Exam;
+				return this._Employee_Name;
 			}
 			set
 			{
-				if ((this._Physical_Exam != value))
+				if ((this._Employee_Name != value))
 				{
 					this._Physical_Exam = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecal_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Fecal_Test
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Email
 		{
 			get
 			{
-				return this._Fecal_Test;
+				return this._Employee_Email;
 			}
 			set
 			{
-				if ((this._Fecal_Test != value))
+				if ((this._Employee_Email != value))
 				{
 					this._Fecal_Test = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blood_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Blood_Test
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Password
 		{
 			get
 			{
-				return this._Blood_Test;
+				return this._Employee_Password;
 			}
 			set
 			{
-				if ((this._Blood_Test != value))
+				if ((this._Employee_Password != value))
 				{
 					this._Blood_Test = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parasite_Exam", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Parasite_Exam
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeRole_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EmployeeRole_ID
 		{
 			get
 			{
-				return this._Parasite_Exam;
+				return this._EmployeeRole_ID;
 			}
 			set
 			{
-				if ((this._Parasite_Exam != value))
+				if ((this._EmployeeRole_ID != value))
 				{
 					this._Parasite_Exam = value;
 				}
@@ -1099,6 +1095,18 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 					this._Pet_Status = value;
 				}
 			}
+		}
+		
+		private void attach_Logs(Log entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = this;
+		}
+		
+		private void detach_Logs(Log entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = null;
 		}
 	}
 	

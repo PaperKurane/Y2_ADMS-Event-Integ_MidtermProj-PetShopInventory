@@ -41,10 +41,16 @@
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(6.375 : 4.44314697265625); (6.875 : 4.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/PetChestConnDataContext/Employee/Employee_Log" />
-      <nodes>
+      <DataClassMoniker Name="/PetChestConnDataContext/Log" />
+      <nestedChildShapes>
         <classShapeMoniker Id="993cc13c-dd3f-493b-8782-4895f28af164" />
         <classShapeMoniker Id="75792a38-b62c-4782-a0b8-04da37ffc945" />
+    </classShape>
+    <associationConnector edgePoints="[(3.125 : 5.65549967447917); (2.625 : 6.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PetChestConnDataContext/Employee/Employee_Log" />
+      <nodes>
+        <classShapeMoniker Id="403f95d6-17ce-49fd-afad-5c4e2a35611f" />
+        <classShapeMoniker Id="a3dea916-99c1-4ba0-bed8-c4e24f617e81" />
       </nodes>
     </associationConnector>
     <classShape Id="426007c7-028a-4f20-b523-cdc952093d94" absoluteBounds="2.25, 1.125, 2, 1.9631982421875003">
