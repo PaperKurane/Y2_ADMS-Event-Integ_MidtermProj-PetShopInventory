@@ -42,10 +42,25 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             _currentUser = userName;
             _dbConn = connection;
 
+            EmployeePrivilegeHandler();
+
             //StatusMessageHandler("Welcome to the system " + userName + "!");
             //StatusMessageHandler(messageString);
             RetrieveDefaultTable();
             StatusMessageHandler(messageString);
+        }
+
+        private void EmployeePrivilegeHandler()
+        {
+            var selectResults = (from s in _dbConn.Employees
+                                where s.Employee_ID == _currentUser
+                                select s.EmployeeRole_ID).FirstOrDefault();
+
+            if (selectResults != "R1")
+            {
+                btnEmployees.Visibility = Visibility.Collapsed;
+                btnLogs.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void StatusMessageHandler(string message)
@@ -112,6 +127,9 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             MessageBoxResult mbr = MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if(mbr == MessageBoxResult.Yes)
             {
+                btnEmployees.Visibility = Visibility.Visible;
+                btnLogs.Visibility = Visibility.Visible;
+
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();
