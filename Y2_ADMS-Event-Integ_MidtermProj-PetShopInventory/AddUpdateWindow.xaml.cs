@@ -29,6 +29,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         SoundSystem sound = new SoundSystem();
 
         public string StatusMessagePasser { get; set; }
+        public string TableRefresher { get; set; }
 
         public AddUpdateWindow(object selectedItem, string tableName, PetChestConnDataContext connection)
         {
@@ -48,6 +49,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             _dbConn = connection;
 
             lbWindowTitle.Content = "Updating an Entry in the " + tableName + " table...";
+
+            TableRefresher = "btn" + tableName;
 
             switch (tableName)
             {
@@ -75,6 +78,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             _dbConn = connection;
 
             lbWindowTitle.Content = "Adding a New Entry to the " + tableName + " table...";
+
+            TableRefresher = "btn" + tableName;
 
             switch (tableName)
             {
@@ -107,49 +112,63 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
             if (btnConfirm.Content.ToString() == "Add")
             {
-                switch (_uspNum)
+                try
                 {
-                    case 1:
-                        string selectedPetType1 = cbPetsPetType.SelectedItem.ToString();
-                        string selectedPetStatus = cbPetsPetStatus.SelectedItem.ToString();
-                        _dbConn.addPet(tbPetsPetName.Text, dataToKey(selectedPetType1), tbPetsPetBreed.Text, int.Parse(tbPetsPetAge.Text),
-                            cbPetsPetSex.SelectedItem.ToString(), int.Parse(tbPetsPetPrice.Text), dataToKey(selectedPetStatus));
-                        break;
-                    case 2:
-                        string selectedPetType2 = cbProductsPetType.SelectedItem.ToString();
-                        string selectedProductType = cbProductsProductType.SelectedItem.ToString();
-                        _dbConn.addProduct(tbProductsProductName.Text, dataToKey(selectedPetType2), dataToKey(selectedProductType), 
-                            int.Parse(tbProductsStock.Text), int.Parse(tbProductsPrice.Text));
-                        break;
-                    case 3:
-                        _dbConn.addMedSum(int.Parse(tbMedSumPetID.Text), cbMedSumPhysical.SelectedItem.ToString(), cbMedSumFecal.SelectedItem.ToString(),
-                            cbMedSumBlood.SelectedItem.ToString(), cbMedSumParasite.SelectedItem.ToString(), _calendarDate);
-                        break;
+                    switch (_uspNum)
+                    {
+                        case 1:
+                            string selectedPetType1 = cbPetsPetType.SelectedItem.ToString();
+                            string selectedPetStatus = cbPetsPetStatus.SelectedItem.ToString();
+                            _dbConn.addPet(tbPetsPetName.Text, dataToKey(selectedPetType1), tbPetsPetBreed.Text, int.Parse(tbPetsPetAge.Text),
+                                cbPetsPetSex.SelectedItem.ToString(), int.Parse(tbPetsPetPrice.Text), dataToKey(selectedPetStatus));
+                            break;
+                        case 2:
+                            string selectedPetType2 = cbProductsPetType.SelectedItem.ToString();
+                            string selectedProductType = cbProductsProductType.SelectedItem.ToString();
+                            _dbConn.addProduct(tbProductsProductName.Text, dataToKey(selectedPetType2), dataToKey(selectedProductType),
+                                int.Parse(tbProductsStock.Text), int.Parse(tbProductsPrice.Text));
+                            break;
+                        case 3:
+                            _dbConn.addMedSum(int.Parse(tbMedSumPetID.Text), cbMedSumPhysical.SelectedItem.ToString(), cbMedSumFecal.SelectedItem.ToString(),
+                                cbMedSumBlood.SelectedItem.ToString(), cbMedSumParasite.SelectedItem.ToString(), _calendarDate);
+                            break;
+                    }
+                    StatusMessagePasser = "Sucessfully added an entry in the ";
                 }
-                StatusMessagePasser = "Sucessfully added an entry in the ";
+                catch (Exception err)
+                {
+                    MessageBox.Show("There has been an error with trying to add data to the table...", "AddError", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                switch (_uspNum)
+                try
                 {
-                    case 1:
-                        string selectedPetType1 = cbPetsPetType.SelectedItem.ToString();
-                        string selectedPetStatus = cbPetsPetStatus.SelectedItem.ToString();
-                        _dbConn.updatePets(_rowID, tbPetsPetName.Text, dataToKey(selectedPetType1), tbPetsPetBreed.Text, int.Parse(tbPetsPetAge.Text),
-                            cbPetsPetSex.SelectedItem.ToString(), int.Parse(tbPetsPetPrice.Text), dataToKey(selectedPetStatus));
-                        break;
-                    case 2:
-                        string selectedPetType2 = cbProductsPetType.SelectedItem.ToString();
-                        string selectedProductType = cbProductsProductType.SelectedItem.ToString();
-                        _dbConn.updateProducts(_rowID, tbProductsProductName.Text, dataToKey(selectedPetType2), dataToKey(selectedProductType),
-                            int.Parse(tbProductsStock.Text), int.Parse(tbProductsPrice.Text));
-                        break;
-                    case 3:
-                        _dbConn.updateMedSum(_rowID, cbMedSumPhysical.SelectedItem.ToString(), cbMedSumFecal.SelectedItem.ToString(),
-                            cbMedSumBlood.SelectedItem.ToString(), cbMedSumParasite.SelectedItem.ToString(), _calendarDate);
-                        break;
+                    switch (_uspNum)
+                    {
+                        case 1:
+                            string selectedPetType1 = cbPetsPetType.SelectedItem.ToString();
+                            string selectedPetStatus = cbPetsPetStatus.SelectedItem.ToString();
+                            _dbConn.updatePets(_rowID, tbPetsPetName.Text, dataToKey(selectedPetType1), tbPetsPetBreed.Text, int.Parse(tbPetsPetAge.Text),
+                                cbPetsPetSex.SelectedItem.ToString(), int.Parse(tbPetsPetPrice.Text), dataToKey(selectedPetStatus));
+                            break;
+                        case 2:
+                            string selectedPetType2 = cbProductsPetType.SelectedItem.ToString();
+                            string selectedProductType = cbProductsProductType.SelectedItem.ToString();
+                            _dbConn.updateProducts(_rowID, tbProductsProductName.Text, dataToKey(selectedPetType2), dataToKey(selectedProductType),
+                                int.Parse(tbProductsStock.Text), int.Parse(tbProductsPrice.Text));
+                            break;
+                        case 3:
+                            _dbConn.updateMedSum(_rowID, cbMedSumPhysical.SelectedItem.ToString(), cbMedSumFecal.SelectedItem.ToString(),
+                                cbMedSumBlood.SelectedItem.ToString(), cbMedSumParasite.SelectedItem.ToString(), _calendarDate);
+                            break;
+                    }
+                    StatusMessagePasser = "Sucessfully updated an entry in the ";
                 }
-                StatusMessagePasser = "Sucessfully updated an entry in the ";
+                catch (Exception err)
+                {
+                    MessageBox.Show("There has been an error with trying to update data in the table...", "UpdateError", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             DisableAUWInterface();
             this.Close();
@@ -203,6 +222,10 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
             if (btnConfirm.Content.ToString() == "Update")
             {
+                if (int.Parse(_rowDetails[4]) < 30)
+                {
+                    imgLowStock.Visibility = Visibility.Visible;
+                }
                 _rowID = int.Parse(_rowDetails[0]);
                 tbProductsProductName.Text = _rowDetails[1];
                 cbProductsPetType.SelectedItem = _rowDetails[2];
@@ -214,7 +237,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void Medical_Summary()
         {
-            //equate petID to pet name :>
             _uspNum = 3;
             MedSumTable.Visibility = Visibility.Visible;
 
@@ -232,6 +254,9 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
             if (btnConfirm.Content.ToString() == "Update")
             {
+                lbMedSumPetID.Content = "Pet Name";
+                tbMedSumPetID.IsReadOnly = true;
+
                 _rowID = int.Parse(_rowDetails[0]);
                 tbMedSumPetID.Text = _rowDetails[1];
                 cbMedSumPhysical.SelectedItem = _rowDetails[2];

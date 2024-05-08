@@ -151,6 +151,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
             string message = auw.StatusMessagePasser + _currentTable + " table.";
             StatusMessageHandler(message);
+            RetrieveTable(auw.TableRefresher);
         }
 
         private void dgMainTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -169,6 +170,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                         auw.ShowDialog();
                         string message = auw.StatusMessagePasser + "Pets Table";
                         StatusMessageHandler(message);
+                        RetrieveTable(auw.TableRefresher);
                     }
                 }
                 else if (_currentTable == "Products")
@@ -181,6 +183,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                         auw.ShowDialog();
                         string message = auw.StatusMessagePasser + "Products Table";
                         StatusMessageHandler(message);
+                        RetrieveTable(auw.TableRefresher);
                     }
                 }
                 else if (_currentTable == "MedSum")
@@ -193,10 +196,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                         auw.ShowDialog();
                         string message = auw.StatusMessagePasser + "Medical Summary Table";
                         StatusMessageHandler(message);
+                        RetrieveTable(auw.TableRefresher);
                     }
-                }
-                else
-                {
                 }
             }
         }

@@ -56,6 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PetChestConn.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PetChestConn.dbml</DependentUpon>
+    </Compile>
     <Compile Include="SoundSystem.cs" />
     <Page Include="AddUpdateWindow.xaml">
       <SubType>Designer</SubType>
@@ -82,11 +87,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PetChestConn.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PetChestConn.dbml</DependentUpon>
-    </Compile>
     <Compile Include="PetChestMainMenu.xaml.cs">
       <DependentUpon>PetChestMainMenu.xaml</DependentUpon>
     </Compile>
