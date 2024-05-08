@@ -20,12 +20,12 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     /// <summary>
     /// Interaction logic for PetChestMainMenu.xaml
     /// </summary>
+    
     public partial class PetChestMainMenu : Window
     {
         PetChestConnDataContext _dbConn = null;
         string _defaultTable = "btnPets";
         string _currentTable = "";
-
         string _currentUser = "";
 
         public PetChestMainMenu()
@@ -71,7 +71,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                     StatusMessageHandler("Now viewing the Medical Summary Table.");
                     break;
                 case "btnEmployees":
-                    table = from tb in _dbConn.Employees
+                    table = from tb in _dbConn.employeeDisplays
                             select (object)tb;
                     StatusMessageHandler("Now viewing the Employees Table.");
                     break;
@@ -117,6 +117,46 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             auw.ShowDialog();   
         }
 
+        private void dgMainTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgMainTable.SelectedItem != null)
+            {
+                if (_currentTable == "Pets")
+                {
+                    petDisplay selectedPet = dgMainTable.SelectedItem as petDisplay;
+                    if (selectedPet != null)
+                    {
+                        AddUpdateWindow auw = new AddUpdateWindow(selectedPet, _currentTable, _dbConn);
+                        auw.Owner = this;
+                        auw.ShowDialog();
+                    }
+                }
+                else if (_currentTable == "Products")
+                {
+                    productDisplay selectedProduct = dgMainTable.SelectedItem as productDisplay;
+                    if (selectedProduct != null)
+                    {
+                        AddUpdateWindow auw = new AddUpdateWindow(selectedProduct, _currentTable, _dbConn);
+                        auw.Owner = this;
+                        auw.ShowDialog();
+                    }
+                }
+                else if (_currentTable == "MedSum")
+                {
+                    medicalDisplay selectedMedSum = dgMainTable.SelectedItem as medicalDisplay;
+                    if (selectedMedSum != null)
+                    {
+                        AddUpdateWindow auw = new AddUpdateWindow(selectedMedSum, _currentTable, _dbConn);
+                        auw.Owner = this;
+                        auw.ShowDialog();
+                    }
+                }
+                else
+                {
+                }
+            }
+        }
+            
         private void tbSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchQuery = tbSearchBar.Text.ToLower();
