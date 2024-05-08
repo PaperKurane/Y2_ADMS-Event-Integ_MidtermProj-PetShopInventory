@@ -55,6 +55,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void RetrieveTable(string button)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             IQueryable<object> table = null;
 
             switch (button)
@@ -98,8 +100,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void sdbr_btn_click(object sender, RoutedEventArgs e)
         {
-            sound.Initialize("Terraria-UI-Sound.mp3", 5);
-
             string button = ((Button)sender).Name.ToString();
             tbSearchBar.Text = string.Empty;
             RetrieveTable(button);
