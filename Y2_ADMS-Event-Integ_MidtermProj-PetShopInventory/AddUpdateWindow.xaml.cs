@@ -22,7 +22,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     {
         PetChestConnDataContext _dbConn = null;
         public int _uspNum = 0;
-        public DateTime _calendarDate = DateTime.Now;
+        public string _calendarDate = "";
         public int _rowID = 0;
         private List<string> _rowDetails = new List<string>();
 
@@ -258,8 +258,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
             DateTime selectedDate = clndrDate.SelectedDate.GetValueOrDefault();
 
-            _calendarDate = selectedDate;
-            btnMedSumDate.Content = selectedDate.ToShortDateString();
+            _calendarDate = selectedDate.ToShortDateString();
+            btnMedSumDate.Content = _calendarDate;
 
             clndrDate.Visibility = Visibility.Collapsed;
         }
