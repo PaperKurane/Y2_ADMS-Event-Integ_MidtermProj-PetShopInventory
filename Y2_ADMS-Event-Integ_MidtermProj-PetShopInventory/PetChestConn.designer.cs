@@ -39,9 +39,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     partial void InsertEmployee_Status(Employee_Status instance);
     partial void UpdateEmployee_Status(Employee_Status instance);
     partial void DeleteEmployee_Status(Employee_Status instance);
-    partial void InsertEmployee(Employee instance);
-    partial void UpdateEmployee(Employee instance);
-    partial void DeleteEmployee(Employee instance);
     partial void InsertLog(Log instance);
     partial void UpdateLog(Log instance);
     partial void DeleteLog(Log instance);
@@ -60,6 +57,9 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     partial void InsertProduct_Type(Product_Type instance);
     partial void UpdateProduct_Type(Product_Type instance);
     partial void DeleteProduct_Type(Product_Type instance);
+    partial void InsertEmployee(Employee instance);
+    partial void UpdateEmployee(Employee instance);
+    partial void DeleteEmployee(Employee instance);
     #endregion
 		
 		public PetChestConnDataContext() : 
@@ -116,14 +116,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			}
 		}
 		
-		public System.Data.Linq.Table<Employee> Employees
-		{
-			get
-			{
-				return this.GetTable<Employee>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Log> Logs
 		{
 			get
@@ -172,14 +164,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			}
 		}
 		
-		public System.Data.Linq.Table<employeeDisplay> employeeDisplays
-		{
-			get
-			{
-				return this.GetTable<employeeDisplay>();
-			}
-		}
-		
 		public System.Data.Linq.Table<medicalDisplay> medicalDisplays
 		{
 			get
@@ -201,6 +185,22 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			get
 			{
 				return this.GetTable<productDisplay>();
+			}
+		}
+		
+		public System.Data.Linq.Table<employeeDisplay> employeeDisplays
+		{
+			get
+			{
+				return this.GetTable<employeeDisplay>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Employee> Employees
+		{
+			get
+			{
+				return this.GetTable<Employee>();
 			}
 		}
 		
@@ -739,322 +739,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employees")]
-	public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Employee_ID;
-		
-		private string _Employee_Name;
-		
-		private string _Employee_Email;
-		
-		private string _Employee_Password;
-		
-		private string _EmployeeRole_ID;
-		
-		private string _EmployeeStatus_ID;
-		
-		private System.DateTime _Last_Login;
-		
-		private EntitySet<Log> _Logs;
-		
-		private EntityRef<Employee_Role> _Employee_Role;
-		
-		private EntityRef<Employee_Status> _Employee_Status;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnEmployee_IDChanging(string value);
-    partial void OnEmployee_IDChanged();
-    partial void OnEmployee_NameChanging(string value);
-    partial void OnEmployee_NameChanged();
-    partial void OnEmployee_EmailChanging(string value);
-    partial void OnEmployee_EmailChanged();
-    partial void OnEmployee_PasswordChanging(string value);
-    partial void OnEmployee_PasswordChanged();
-    partial void OnEmployeeRole_IDChanging(string value);
-    partial void OnEmployeeRole_IDChanged();
-    partial void OnEmployeeStatus_IDChanging(string value);
-    partial void OnEmployeeStatus_IDChanged();
-    partial void OnLast_LoginChanging(System.DateTime value);
-    partial void OnLast_LoginChanged();
-    #endregion
-		
-		public Employee()
-		{
-			this._Logs = new EntitySet<Log>(new Action<Log>(this.attach_Logs), new Action<Log>(this.detach_Logs));
-			this._Employee_Role = default(EntityRef<Employee_Role>);
-			this._Employee_Status = default(EntityRef<Employee_Status>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Employee_ID
-		{
-			get
-			{
-				return this._Employee_ID;
-			}
-			set
-			{
-				if ((this._Employee_ID != value))
-				{
-					this.OnEmployee_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Employee_ID = value;
-					this.SendPropertyChanged("Employee_ID");
-					this.OnEmployee_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Name
-		{
-			get
-			{
-				return this._Employee_Name;
-			}
-			set
-			{
-				if ((this._Employee_Name != value))
-				{
-					this.OnEmployee_NameChanging(value);
-					this.SendPropertyChanging();
-					this._Employee_Name = value;
-					this.SendPropertyChanged("Employee_Name");
-					this.OnEmployee_NameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Email
-		{
-			get
-			{
-				return this._Employee_Email;
-			}
-			set
-			{
-				if ((this._Employee_Email != value))
-				{
-					this.OnEmployee_EmailChanging(value);
-					this.SendPropertyChanging();
-					this._Employee_Email = value;
-					this.SendPropertyChanged("Employee_Email");
-					this.OnEmployee_EmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Password
-		{
-			get
-			{
-				return this._Employee_Password;
-			}
-			set
-			{
-				if ((this._Employee_Password != value))
-				{
-					this.OnEmployee_PasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Employee_Password = value;
-					this.SendPropertyChanged("Employee_Password");
-					this.OnEmployee_PasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeRole_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string EmployeeRole_ID
-		{
-			get
-			{
-				return this._EmployeeRole_ID;
-			}
-			set
-			{
-				if ((this._EmployeeRole_ID != value))
-				{
-					if (this._Employee_Role.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployeeRole_IDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeRole_ID = value;
-					this.SendPropertyChanged("EmployeeRole_ID");
-					this.OnEmployeeRole_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeStatus_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string EmployeeStatus_ID
-		{
-			get
-			{
-				return this._EmployeeStatus_ID;
-			}
-			set
-			{
-				if ((this._EmployeeStatus_ID != value))
-				{
-					if (this._Employee_Status.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployeeStatus_IDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeStatus_ID = value;
-					this.SendPropertyChanged("EmployeeStatus_ID");
-					this.OnEmployeeStatus_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Login", DbType="DateTime NOT NULL")]
-		public System.DateTime Last_Login
-		{
-			get
-			{
-				return this._Last_Login;
-			}
-			set
-			{
-				if ((this._Last_Login != value))
-				{
-					this.OnLast_LoginChanging(value);
-					this.SendPropertyChanging();
-					this._Last_Login = value;
-					this.SendPropertyChanged("Last_Login");
-					this.OnLast_LoginChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Log", Storage="_Logs", ThisKey="Employee_ID", OtherKey="Login_ID")]
-		public EntitySet<Log> Logs
-		{
-			get
-			{
-				return this._Logs;
-			}
-			set
-			{
-				this._Logs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Role_Employee", Storage="_Employee_Role", ThisKey="EmployeeRole_ID", OtherKey="EmployeeRole_ID", IsForeignKey=true)]
-		public Employee_Role Employee_Role
-		{
-			get
-			{
-				return this._Employee_Role.Entity;
-			}
-			set
-			{
-				Employee_Role previousValue = this._Employee_Role.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee_Role.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee_Role.Entity = null;
-						previousValue.Employees.Remove(this);
-					}
-					this._Employee_Role.Entity = value;
-					if ((value != null))
-					{
-						value.Employees.Add(this);
-						this._EmployeeRole_ID = value.EmployeeRole_ID;
-					}
-					else
-					{
-						this._EmployeeRole_ID = default(string);
-					}
-					this.SendPropertyChanged("Employee_Role");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Status_Employee", Storage="_Employee_Status", ThisKey="EmployeeStatus_ID", OtherKey="EmployeeStatus_ID", IsForeignKey=true)]
-		public Employee_Status Employee_Status
-		{
-			get
-			{
-				return this._Employee_Status.Entity;
-			}
-			set
-			{
-				Employee_Status previousValue = this._Employee_Status.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee_Status.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee_Status.Entity = null;
-						previousValue.Employees.Remove(this);
-					}
-					this._Employee_Status.Entity = value;
-					if ((value != null))
-					{
-						value.Employees.Add(this);
-						this._EmployeeStatus_ID = value.EmployeeStatus_ID;
-					}
-					else
-					{
-						this._EmployeeStatus_ID = default(string);
-					}
-					this.SendPropertyChanged("Employee_Status");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Logs(Log entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = this;
-		}
-		
-		private void detach_Logs(Log entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Logs")]
 	public partial class Log : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1066,8 +750,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		private string _Login_ID;
 		
 		private System.DateTime _Login_Date;
-		
-		private EntityRef<Employee> _Employee;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1083,7 +765,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		
 		public Log()
 		{
-			this._Employee = default(EntityRef<Employee>);
 			OnCreated();
 		}
 		
@@ -1118,10 +799,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			{
 				if ((this._Login_ID != value))
 				{
-					if (this._Employee.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnLogin_IDChanging(value);
 					this.SendPropertyChanging();
 					this._Login_ID = value;
@@ -1147,40 +824,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 					this._Login_Date = value;
 					this.SendPropertyChanged("Login_Date");
 					this.OnLogin_DateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Log", Storage="_Employee", ThisKey="Login_ID", OtherKey="Employee_ID", IsForeignKey=true)]
-		public Employee Employee
-		{
-			get
-			{
-				return this._Employee.Entity;
-			}
-			set
-			{
-				Employee previousValue = this._Employee.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee.Entity = null;
-						previousValue.Logs.Remove(this);
-					}
-					this._Employee.Entity = value;
-					if ((value != null))
-					{
-						value.Logs.Add(this);
-						this._Login_ID = value.Employee_ID;
-					}
-					else
-					{
-						this._Login_ID = default(string);
-					}
-					this.SendPropertyChanged("Employee");
 				}
 			}
 		}
@@ -2163,141 +1806,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.employeeDisplay")]
-	public partial class employeeDisplay
-	{
-		
-		private string _Employee_ID;
-		
-		private string _Employee_Name;
-		
-		private string _Employee_Email;
-		
-		private string _Employee_Password;
-		
-		private string _Employee_Role;
-		
-		private string _Employee_Status;
-		
-		private System.DateTime _Last_Login;
-		
-		public employeeDisplay()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_ID
-		{
-			get
-			{
-				return this._Employee_ID;
-			}
-			set
-			{
-				if ((this._Employee_ID != value))
-				{
-					this._Employee_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Name
-		{
-			get
-			{
-				return this._Employee_Name;
-			}
-			set
-			{
-				if ((this._Employee_Name != value))
-				{
-					this._Employee_Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Email
-		{
-			get
-			{
-				return this._Employee_Email;
-			}
-			set
-			{
-				if ((this._Employee_Email != value))
-				{
-					this._Employee_Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Password
-		{
-			get
-			{
-				return this._Employee_Password;
-			}
-			set
-			{
-				if ((this._Employee_Password != value))
-				{
-					this._Employee_Password = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Role", DbType="VarChar(50)")]
-		public string Employee_Role
-		{
-			get
-			{
-				return this._Employee_Role;
-			}
-			set
-			{
-				if ((this._Employee_Role != value))
-				{
-					this._Employee_Role = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Status", DbType="VarChar(50)")]
-		public string Employee_Status
-		{
-			get
-			{
-				return this._Employee_Status;
-			}
-			set
-			{
-				if ((this._Employee_Status != value))
-				{
-					this._Employee_Status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Login", DbType="DateTime NOT NULL")]
-		public System.DateTime Last_Login
-		{
-			get
-			{
-				return this._Last_Login;
-			}
-			set
-			{
-				if ((this._Last_Login != value))
-				{
-					this._Last_Login = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.medicalDisplay")]
 	public partial class medicalDisplay
 	{
@@ -2699,6 +2207,411 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 				{
 					this._Product_Price = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.employeeDisplay")]
+	public partial class employeeDisplay
+	{
+		
+		private string _Employee_ID;
+		
+		private string _Employee_Name;
+		
+		private string _Employee_Email;
+		
+		private string _Employee_Role;
+		
+		private string _Employee_Status;
+		
+		private System.DateTime _Last_Login;
+		
+		public employeeDisplay()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_ID
+		{
+			get
+			{
+				return this._Employee_ID;
+			}
+			set
+			{
+				if ((this._Employee_ID != value))
+				{
+					this._Employee_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Name
+		{
+			get
+			{
+				return this._Employee_Name;
+			}
+			set
+			{
+				if ((this._Employee_Name != value))
+				{
+					this._Employee_Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Email
+		{
+			get
+			{
+				return this._Employee_Email;
+			}
+			set
+			{
+				if ((this._Employee_Email != value))
+				{
+					this._Employee_Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Role", DbType="VarChar(50)")]
+		public string Employee_Role
+		{
+			get
+			{
+				return this._Employee_Role;
+			}
+			set
+			{
+				if ((this._Employee_Role != value))
+				{
+					this._Employee_Role = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Status", DbType="VarChar(50)")]
+		public string Employee_Status
+		{
+			get
+			{
+				return this._Employee_Status;
+			}
+			set
+			{
+				if ((this._Employee_Status != value))
+				{
+					this._Employee_Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Login", DbType="DateTime NOT NULL")]
+		public System.DateTime Last_Login
+		{
+			get
+			{
+				return this._Last_Login;
+			}
+			set
+			{
+				if ((this._Last_Login != value))
+				{
+					this._Last_Login = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employees")]
+	public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Employee_ID;
+		
+		private string _Employee_Name;
+		
+		private string _Employee_Email;
+		
+		private string _Employee_Password;
+		
+		private string _EmployeeRole_ID;
+		
+		private string _EmployeeStatus_ID;
+		
+		private System.DateTime _Last_Login;
+		
+		private EntityRef<Employee_Role> _Employee_Role;
+		
+		private EntityRef<Employee_Status> _Employee_Status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEmployee_IDChanging(string value);
+    partial void OnEmployee_IDChanged();
+    partial void OnEmployee_NameChanging(string value);
+    partial void OnEmployee_NameChanged();
+    partial void OnEmployee_EmailChanging(string value);
+    partial void OnEmployee_EmailChanged();
+    partial void OnEmployee_PasswordChanging(string value);
+    partial void OnEmployee_PasswordChanged();
+    partial void OnEmployeeRole_IDChanging(string value);
+    partial void OnEmployeeRole_IDChanged();
+    partial void OnEmployeeStatus_IDChanging(string value);
+    partial void OnEmployeeStatus_IDChanged();
+    partial void OnLast_LoginChanging(System.DateTime value);
+    partial void OnLast_LoginChanged();
+    #endregion
+		
+		public Employee()
+		{
+			this._Employee_Role = default(EntityRef<Employee_Role>);
+			this._Employee_Status = default(EntityRef<Employee_Status>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Employee_ID
+		{
+			get
+			{
+				return this._Employee_ID;
+			}
+			set
+			{
+				if ((this._Employee_ID != value))
+				{
+					this.OnEmployee_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Employee_ID = value;
+					this.SendPropertyChanged("Employee_ID");
+					this.OnEmployee_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Name
+		{
+			get
+			{
+				return this._Employee_Name;
+			}
+			set
+			{
+				if ((this._Employee_Name != value))
+				{
+					this.OnEmployee_NameChanging(value);
+					this.SendPropertyChanging();
+					this._Employee_Name = value;
+					this.SendPropertyChanged("Employee_Name");
+					this.OnEmployee_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Email
+		{
+			get
+			{
+				return this._Employee_Email;
+			}
+			set
+			{
+				if ((this._Employee_Email != value))
+				{
+					this.OnEmployee_EmailChanging(value);
+					this.SendPropertyChanging();
+					this._Employee_Email = value;
+					this.SendPropertyChanged("Employee_Email");
+					this.OnEmployee_EmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Password
+		{
+			get
+			{
+				return this._Employee_Password;
+			}
+			set
+			{
+				if ((this._Employee_Password != value))
+				{
+					this.OnEmployee_PasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Employee_Password = value;
+					this.SendPropertyChanged("Employee_Password");
+					this.OnEmployee_PasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeRole_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EmployeeRole_ID
+		{
+			get
+			{
+				return this._EmployeeRole_ID;
+			}
+			set
+			{
+				if ((this._EmployeeRole_ID != value))
+				{
+					if (this._Employee_Role.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployeeRole_IDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeRole_ID = value;
+					this.SendPropertyChanged("EmployeeRole_ID");
+					this.OnEmployeeRole_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeStatus_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EmployeeStatus_ID
+		{
+			get
+			{
+				return this._EmployeeStatus_ID;
+			}
+			set
+			{
+				if ((this._EmployeeStatus_ID != value))
+				{
+					if (this._Employee_Status.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployeeStatus_IDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeStatus_ID = value;
+					this.SendPropertyChanged("EmployeeStatus_ID");
+					this.OnEmployeeStatus_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Login", DbType="DateTime NOT NULL")]
+		public System.DateTime Last_Login
+		{
+			get
+			{
+				return this._Last_Login;
+			}
+			set
+			{
+				if ((this._Last_Login != value))
+				{
+					this.OnLast_LoginChanging(value);
+					this.SendPropertyChanging();
+					this._Last_Login = value;
+					this.SendPropertyChanged("Last_Login");
+					this.OnLast_LoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Role_Employee", Storage="_Employee_Role", ThisKey="EmployeeRole_ID", OtherKey="EmployeeRole_ID", IsForeignKey=true)]
+		public Employee_Role Employee_Role
+		{
+			get
+			{
+				return this._Employee_Role.Entity;
+			}
+			set
+			{
+				Employee_Role previousValue = this._Employee_Role.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee_Role.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee_Role.Entity = null;
+						previousValue.Employees.Remove(this);
+					}
+					this._Employee_Role.Entity = value;
+					if ((value != null))
+					{
+						value.Employees.Add(this);
+						this._EmployeeRole_ID = value.EmployeeRole_ID;
+					}
+					else
+					{
+						this._EmployeeRole_ID = default(string);
+					}
+					this.SendPropertyChanged("Employee_Role");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Status_Employee", Storage="_Employee_Status", ThisKey="EmployeeStatus_ID", OtherKey="EmployeeStatus_ID", IsForeignKey=true)]
+		public Employee_Status Employee_Status
+		{
+			get
+			{
+				return this._Employee_Status.Entity;
+			}
+			set
+			{
+				Employee_Status previousValue = this._Employee_Status.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee_Status.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee_Status.Entity = null;
+						previousValue.Employees.Remove(this);
+					}
+					this._Employee_Status.Entity = value;
+					if ((value != null))
+					{
+						value.Employees.Add(this);
+						this._EmployeeStatus_ID = value.EmployeeStatus_ID;
+					}
+					else
+					{
+						this._EmployeeStatus_ID = default(string);
+					}
+					this.SendPropertyChanged("Employee_Status");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

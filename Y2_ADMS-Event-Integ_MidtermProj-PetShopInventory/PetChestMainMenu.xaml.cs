@@ -231,7 +231,14 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                                    select item;
                     break;
                 case "Employees":
-                    // need a view for this
+                    filteredData = from item in _dbConn.employeeDisplays
+                                   where item.Employee_ID.ToLower().Contains(searchQuery) ||
+                                         item.Employee_Name.ToLower().Contains(searchQuery) ||
+                                         item.Employee_Email.ToLower().Contains(searchQuery) ||
+                                         //item.Employee_Password.ToLower().Contains(searchQuery) ||
+                                         item.Employee_Role.ToLower().Contains(searchQuery) ||
+                                         item.Employee_Status.ToLower().Contains(searchQuery)
+                                   select item;
                     break;
                 case "Logs":
                     filteredData = from item in _dbConn.Logs

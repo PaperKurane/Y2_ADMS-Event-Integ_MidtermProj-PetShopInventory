@@ -26,26 +26,11 @@
       <Association Name="Employee_Status_Employee" Member="Employees" ThisKey="EmployeeStatus_ID" OtherKey="EmployeeStatus_ID" Type="Employee" />
     </Type>
   </Table>
-  <Table Name="dbo.Employees" Member="Employees">
-    <Type Name="Employee">
-      <Column Name="Employee_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Employee_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Employee_Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Employee_Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeRole_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeStatus_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Last_Login" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Employee_Log" Member="Logs" ThisKey="Employee_ID" OtherKey="Login_ID" Type="Log" />
-      <Association Name="Employee_Role_Employee" Member="Employee_Role" ThisKey="EmployeeRole_ID" OtherKey="EmployeeRole_ID" Type="Employee_Role" IsForeignKey="true" />
-      <Association Name="Employee_Status_Employee" Member="Employee_Status" ThisKey="EmployeeStatus_ID" OtherKey="EmployeeStatus_ID" Type="Employee_Status" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Logs" Member="Logs">
     <Type Name="Log">
       <Column Name="Log_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Login_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Login_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Employee_Log" Member="Employee" ThisKey="Login_ID" OtherKey="Employee_ID" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.[Medical Summary]" Member="Medical_Summaries">
@@ -97,17 +82,6 @@
       <Association Name="Product_Type_Product" Member="Products" ThisKey="ProductType_ID" OtherKey="ProductType_ID" Type="Product" />
     </Type>
   </Table>
-  <Table Name="dbo.employeeDisplay" Member="employeeDisplays">
-    <Type Name="employeeDisplay">
-      <Column Name="Employee_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Employee_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Employee_Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Employee_Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Employee_Role" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Employee_Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Last_Login" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.medicalDisplay" Member="medicalDisplays">
     <Type Name="medicalDisplay">
       <Column Name="MedSum_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -139,6 +113,29 @@
       <Column Name="Product_Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Product_Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Product_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employeeDisplay" Member="employeeDisplays">
+    <Type Name="employeeDisplay">
+      <Column Name="Employee_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Role" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Employee_Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Last_Login" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="Employee_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Employee_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeRole_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeStatus_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Last_Login" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_Role_Employee" Member="Employee_Role" ThisKey="EmployeeRole_ID" OtherKey="EmployeeRole_ID" Type="Employee_Role" IsForeignKey="true" />
+      <Association Name="Employee_Status_Employee" Member="Employee_Status" ThisKey="EmployeeStatus_ID" OtherKey="EmployeeStatus_ID" Type="Employee_Status" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.addMedSum" Method="addMedSum">
