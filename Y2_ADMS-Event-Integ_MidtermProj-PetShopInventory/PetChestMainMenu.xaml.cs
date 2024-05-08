@@ -28,20 +28,39 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
         string _currentTable = "";
         string _currentUser = "";
 
+        SoundSystem sound = new SoundSystem();
+
         public PetChestMainMenu()
         {
             InitializeComponent();
         }
 
-        public PetChestMainMenu(string userName, PetChestConnDataContext connection)
+        public PetChestMainMenu(string userName, PetChestConnDataContext connection, string messageString)
         {
             InitializeComponent();
 
             _currentUser = userName;
             _dbConn = connection;
 
-            StatusMessageHandler("Welcome to the system " + userName + "!");
+            EmployeePrivilegeHandler();
+
+            //StatusMessageHandler("Welcome to the system " + userName + "!");
+            //StatusMessageHandler(messageString);
             RetrieveDefaultTable();
+            StatusMessageHandler(messageString);
+        }
+
+        private void EmployeePrivilegeHandler()
+        {
+            var selectResults = (from s in _dbConn.Employees
+                                where s.Employee_ID == _currentUser
+                                select s.EmployeeRole_ID).FirstOrDefault();
+
+            if (selectResults != "R1")
+            {
+                btnEmployees.Visibility = Visibility.Collapsed;
+                btnLogs.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void StatusMessageHandler(string message)
@@ -51,6 +70,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void RetrieveTable(string button)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             IQueryable<object> table = null;
 
             switch (button)
@@ -59,26 +80,31 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                     table = from tb in _dbConn.petDisplays
                             select (object)tb;
                     StatusMessageHandler("Now viewing the Pets Table.");
+                    btnAdd.IsEnabled = true;
                     break;
                 case "btnProducts":
                     table = from tb in _dbConn.productDisplays
                             select tb;
                     StatusMessageHandler("Now viewing the Products Table.");
+                    btnAdd.IsEnabled = true;
                     break;
                 case "btnMedSum":
                     table = from tb in _dbConn.medicalDisplays
                             select tb;
                     StatusMessageHandler("Now viewing the Medical Summary Table.");
+                    btnAdd.IsEnabled = true;
                     break;
                 case "btnEmployees":
                     table = from tb in _dbConn.employeeDisplays
                             select (object)tb;
-                    StatusMessageHandler("Now viewing the Employees Table.");
+                    StatusMessageHandler("Now viewing the Employees Table."); 
+                    btnAdd.IsEnabled = false;
                     break;
                 case "btnLogs":
                     table = from tb in _dbConn.Logs
                             select tb;
                     StatusMessageHandler("Now viewing the Logs Table.");
+                    btnAdd.IsEnabled = false;
                     break;
             }
 
@@ -101,9 +127,14 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             MessageBoxResult mbr = MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if(mbr == MessageBoxResult.Yes)
             {
+                btnEmployees.Visibility = Visibility.Visible;
+                btnLogs.Visibility = Visibility.Visible;
+
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();
@@ -112,13 +143,20 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             AddUpdateWindow auw = new AddUpdateWindow(_currentTable, _dbConn);
             auw.Owner = this;
-            auw.ShowDialog();   
+            auw.ShowDialog();
+
+            string message = auw.StatusMessagePasser + _currentTable + " table.";
+            StatusMessageHandler(message);
         }
 
         private void dgMainTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             if (dgMainTable.SelectedItem != null)
             {
                 if (_currentTable == "Pets")
@@ -129,6 +167,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                         AddUpdateWindow auw = new AddUpdateWindow(selectedPet, _currentTable, _dbConn);
                         auw.Owner = this;
                         auw.ShowDialog();
+                        string message = auw.StatusMessagePasser + "Pets Table";
+                        StatusMessageHandler(message);
                     }
                 }
                 else if (_currentTable == "Products")
@@ -139,6 +179,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                         AddUpdateWindow auw = new AddUpdateWindow(selectedProduct, _currentTable, _dbConn);
                         auw.Owner = this;
                         auw.ShowDialog();
+                        string message = auw.StatusMessagePasser + "Products Table";
+                        StatusMessageHandler(message);
                     }
                 }
                 else if (_currentTable == "MedSum")
@@ -149,6 +191,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                         AddUpdateWindow auw = new AddUpdateWindow(selectedMedSum, _currentTable, _dbConn);
                         auw.Owner = this;
                         auw.ShowDialog();
+                        string message = auw.StatusMessagePasser + "Medical Summary Table";
+                        StatusMessageHandler(message);
                     }
                 }
                 else
@@ -219,7 +263,14 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                                    select item;
                     break;
                 case "Employees":
-                    // need a view for this
+                    filteredData = from item in _dbConn.employeeDisplays
+                                   where item.Employee_ID.ToLower().Contains(searchQuery) ||
+                                         item.Employee_Name.ToLower().Contains(searchQuery) ||
+                                         item.Employee_Email.ToLower().Contains(searchQuery) ||
+                                         //item.Employee_Password.ToLower().Contains(searchQuery) ||
+                                         item.Employee_Role.ToLower().Contains(searchQuery) ||
+                                         item.Employee_Status.ToLower().Contains(searchQuery)
+                                   select item;
                     break;
                 case "Logs":
                     filteredData = from item in _dbConn.Logs

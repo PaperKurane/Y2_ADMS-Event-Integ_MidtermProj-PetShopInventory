@@ -30,21 +30,18 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertProduct(Product instance);
+    partial void UpdateProduct(Product instance);
+    partial void DeleteProduct(Product instance);
     partial void InsertEmployee_Role(Employee_Role instance);
     partial void UpdateEmployee_Role(Employee_Role instance);
     partial void DeleteEmployee_Role(Employee_Role instance);
     partial void InsertEmployee_Status(Employee_Status instance);
     partial void UpdateEmployee_Status(Employee_Status instance);
     partial void DeleteEmployee_Status(Employee_Status instance);
-    partial void InsertEmployee(Employee instance);
-    partial void UpdateEmployee(Employee instance);
-    partial void DeleteEmployee(Employee instance);
     partial void InsertLog(Log instance);
     partial void UpdateLog(Log instance);
     partial void DeleteLog(Log instance);
-    partial void InsertMedical_Summary(Medical_Summary instance);
-    partial void UpdateMedical_Summary(Medical_Summary instance);
-    partial void DeleteMedical_Summary(Medical_Summary instance);
     partial void InsertPet_Status(Pet_Status instance);
     partial void UpdatePet_Status(Pet_Status instance);
     partial void DeletePet_Status(Pet_Status instance);
@@ -57,9 +54,12 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     partial void InsertProduct_Type(Product_Type instance);
     partial void UpdateProduct_Type(Product_Type instance);
     partial void DeleteProduct_Type(Product_Type instance);
-    partial void InsertProduct(Product instance);
-    partial void UpdateProduct(Product instance);
-    partial void DeleteProduct(Product instance);
+    partial void InsertEmployee(Employee instance);
+    partial void UpdateEmployee(Employee instance);
+    partial void DeleteEmployee(Employee instance);
+    partial void InsertMedical_Summary(Medical_Summary instance);
+    partial void UpdateMedical_Summary(Medical_Summary instance);
+    partial void DeleteMedical_Summary(Medical_Summary instance);
     #endregion
 		
 		public PetChestConnDataContext() : 
@@ -92,6 +92,14 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Product> Products
+		{
+			get
+			{
+				return this.GetTable<Product>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Employee_Role> Employee_Roles
 		{
 			get
@@ -108,27 +116,11 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			}
 		}
 		
-		public System.Data.Linq.Table<Employee> Employees
-		{
-			get
-			{
-				return this.GetTable<Employee>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Log> Logs
 		{
 			get
 			{
 				return this.GetTable<Log>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Medical_Summary> Medical_Summaries
-		{
-			get
-			{
-				return this.GetTable<Medical_Summary>();
 			}
 		}
 		
@@ -164,30 +156,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			}
 		}
 		
-		public System.Data.Linq.Table<Product> Products
-		{
-			get
-			{
-				return this.GetTable<Product>();
-			}
-		}
-		
-		public System.Data.Linq.Table<employeeDisplay> employeeDisplays
-		{
-			get
-			{
-				return this.GetTable<employeeDisplay>();
-			}
-		}
-		
-		public System.Data.Linq.Table<medicalDisplay> medicalDisplays
-		{
-			get
-			{
-				return this.GetTable<medicalDisplay>();
-			}
-		}
-		
 		public System.Data.Linq.Table<petDisplay> petDisplays
 		{
 			get
@@ -204,8 +172,40 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			}
 		}
 		
+		public System.Data.Linq.Table<employeeDisplay> employeeDisplays
+		{
+			get
+			{
+				return this.GetTable<employeeDisplay>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Employee> Employees
+		{
+			get
+			{
+				return this.GetTable<Employee>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Medical_Summary> Medical_Summaries
+		{
+			get
+			{
+				return this.GetTable<Medical_Summary>();
+			}
+		}
+		
+		public System.Data.Linq.Table<medicalDisplay> medicalDisplays
+		{
+			get
+			{
+				return this.GetTable<medicalDisplay>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.addMedSum")]
-		public int addMedSum([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pet_ID", DbType="Int")] System.Nullable<int> pet_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Physical_Exam", DbType="VarChar(50)")] string physical_Exam, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Fecal_Test", DbType="VarChar(50)")] string fecal_Test, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Blood_Test", DbType="VarChar(50)")] string blood_Test, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Parasite_Exam", DbType="VarChar(50)")] string parasite_Exam, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Last_Checkup", DbType="Date")] System.Nullable<System.DateTime> last_Checkup)
+		public int addMedSum([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pet_ID", DbType="Int")] System.Nullable<int> pet_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Physical_Exam", DbType="VarChar(50)")] string physical_Exam, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Fecal_Test", DbType="VarChar(50)")] string fecal_Test, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Blood_Test", DbType="VarChar(50)")] string blood_Test, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Parasite_Exam", DbType="VarChar(50)")] string parasite_Exam, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Last_Checkup", DbType="VarChar(50)")] string last_Checkup)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pet_ID, physical_Exam, fecal_Test, blood_Test, parasite_Exam, last_Checkup);
 			return ((int)(result.ReturnValue));
@@ -226,9 +226,9 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.updateMedSum")]
-		public int updateMedSum([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MedSum_ID", DbType="Int")] System.Nullable<int> medSum_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pet_ID", DbType="Int")] System.Nullable<int> pet_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Physical_Exam", DbType="VarChar(50)")] string physical_Exam, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Fecal_Test", DbType="VarChar(50)")] string fecal_Test, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Blood_Test", DbType="VarChar(50)")] string blood_Test, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Parasite_Exam", DbType="VarChar(50)")] string parasite_Exam, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Last_Checkup", DbType="Date")] System.Nullable<System.DateTime> last_Checkup)
+		public int updateMedSum([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MedSum_ID", DbType="Int")] System.Nullable<int> medSum_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Physical_Exam", DbType="VarChar(50)")] string physical_Exam, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Fecal_Test", DbType="VarChar(50)")] string fecal_Test, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Blood_Test", DbType="VarChar(50)")] string blood_Test, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Parasite_Exam", DbType="VarChar(50)")] string parasite_Exam, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Last_Checkup", DbType="VarChar(50)")] string last_Checkup)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), medSum_ID, pet_ID, physical_Exam, fecal_Test, blood_Test, parasite_Exam, last_Checkup);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), medSum_ID, physical_Exam, fecal_Test, blood_Test, parasite_Exam, last_Checkup);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -244,6 +244,270 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), product_ID, product_Name, petType_ID, productType_ID, product_Stock, product_Price);
 			return ((int)(result.ReturnValue));
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Products")]
+	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Product_ID;
+		
+		private string _Product_Name;
+		
+		private string _PetType_ID;
+		
+		private string _ProductType_ID;
+		
+		private int _Product_Stock;
+		
+		private int _Product_Price;
+		
+		private EntityRef<Pet_Type> _Pet_Type;
+		
+		private EntityRef<Product_Type> _Product_Type;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProduct_IDChanging(int value);
+    partial void OnProduct_IDChanged();
+    partial void OnProduct_NameChanging(string value);
+    partial void OnProduct_NameChanged();
+    partial void OnPetType_IDChanging(string value);
+    partial void OnPetType_IDChanged();
+    partial void OnProductType_IDChanging(string value);
+    partial void OnProductType_IDChanged();
+    partial void OnProduct_StockChanging(int value);
+    partial void OnProduct_StockChanged();
+    partial void OnProduct_PriceChanging(int value);
+    partial void OnProduct_PriceChanged();
+    #endregion
+		
+		public Product()
+		{
+			this._Pet_Type = default(EntityRef<Pet_Type>);
+			this._Product_Type = default(EntityRef<Product_Type>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Product_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Product_ID
+		{
+			get
+			{
+				return this._Product_ID;
+			}
+			set
+			{
+				if ((this._Product_ID != value))
+				{
+					this.OnProduct_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Product_ID = value;
+					this.SendPropertyChanged("Product_ID");
+					this.OnProduct_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Product_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Product_Name
+		{
+			get
+			{
+				return this._Product_Name;
+			}
+			set
+			{
+				if ((this._Product_Name != value))
+				{
+					this.OnProduct_NameChanging(value);
+					this.SendPropertyChanging();
+					this._Product_Name = value;
+					this.SendPropertyChanged("Product_Name");
+					this.OnProduct_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PetType_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PetType_ID
+		{
+			get
+			{
+				return this._PetType_ID;
+			}
+			set
+			{
+				if ((this._PetType_ID != value))
+				{
+					if (this._Pet_Type.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPetType_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PetType_ID = value;
+					this.SendPropertyChanged("PetType_ID");
+					this.OnPetType_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductType_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ProductType_ID
+		{
+			get
+			{
+				return this._ProductType_ID;
+			}
+			set
+			{
+				if ((this._ProductType_ID != value))
+				{
+					if (this._Product_Type.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProductType_IDChanging(value);
+					this.SendPropertyChanging();
+					this._ProductType_ID = value;
+					this.SendPropertyChanged("ProductType_ID");
+					this.OnProductType_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Product_Stock", DbType="Int NOT NULL")]
+		public int Product_Stock
+		{
+			get
+			{
+				return this._Product_Stock;
+			}
+			set
+			{
+				if ((this._Product_Stock != value))
+				{
+					this.OnProduct_StockChanging(value);
+					this.SendPropertyChanging();
+					this._Product_Stock = value;
+					this.SendPropertyChanged("Product_Stock");
+					this.OnProduct_StockChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Product_Price", DbType="Int NOT NULL")]
+		public int Product_Price
+		{
+			get
+			{
+				return this._Product_Price;
+			}
+			set
+			{
+				if ((this._Product_Price != value))
+				{
+					this.OnProduct_PriceChanging(value);
+					this.SendPropertyChanging();
+					this._Product_Price = value;
+					this.SendPropertyChanged("Product_Price");
+					this.OnProduct_PriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pet_Type_Product", Storage="_Pet_Type", ThisKey="PetType_ID", OtherKey="PetType_ID", IsForeignKey=true)]
+		public Pet_Type Pet_Type
+		{
+			get
+			{
+				return this._Pet_Type.Entity;
+			}
+			set
+			{
+				Pet_Type previousValue = this._Pet_Type.Entity;
+				if (((previousValue != value) 
+							|| (this._Pet_Type.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Pet_Type.Entity = null;
+						previousValue.Products.Remove(this);
+					}
+					this._Pet_Type.Entity = value;
+					if ((value != null))
+					{
+						value.Products.Add(this);
+						this._PetType_ID = value.PetType_ID;
+					}
+					else
+					{
+						this._PetType_ID = default(string);
+					}
+					this.SendPropertyChanged("Pet_Type");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_Type_Product", Storage="_Product_Type", ThisKey="ProductType_ID", OtherKey="ProductType_ID", IsForeignKey=true)]
+		public Product_Type Product_Type
+		{
+			get
+			{
+				return this._Product_Type.Entity;
+			}
+			set
+			{
+				Product_Type previousValue = this._Product_Type.Entity;
+				if (((previousValue != value) 
+							|| (this._Product_Type.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product_Type.Entity = null;
+						previousValue.Products.Remove(this);
+					}
+					this._Product_Type.Entity = value;
+					if ((value != null))
+					{
+						value.Products.Add(this);
+						this._ProductType_ID = value.ProductType_ID;
+					}
+					else
+					{
+						this._ProductType_ID = default(string);
+					}
+					this.SendPropertyChanged("Product_Type");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -475,322 +739,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employees")]
-	public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Employee_ID;
-		
-		private string _Employee_Name;
-		
-		private string _Employee_Email;
-		
-		private string _Employee_Password;
-		
-		private string _EmployeeRole_ID;
-		
-		private string _EmployeeStatus_ID;
-		
-		private System.DateTime _Last_Login;
-		
-		private EntitySet<Log> _Logs;
-		
-		private EntityRef<Employee_Role> _Employee_Role;
-		
-		private EntityRef<Employee_Status> _Employee_Status;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnEmployee_IDChanging(string value);
-    partial void OnEmployee_IDChanged();
-    partial void OnEmployee_NameChanging(string value);
-    partial void OnEmployee_NameChanged();
-    partial void OnEmployee_EmailChanging(string value);
-    partial void OnEmployee_EmailChanged();
-    partial void OnEmployee_PasswordChanging(string value);
-    partial void OnEmployee_PasswordChanged();
-    partial void OnEmployeeRole_IDChanging(string value);
-    partial void OnEmployeeRole_IDChanged();
-    partial void OnEmployeeStatus_IDChanging(string value);
-    partial void OnEmployeeStatus_IDChanged();
-    partial void OnLast_LoginChanging(System.DateTime value);
-    partial void OnLast_LoginChanged();
-    #endregion
-		
-		public Employee()
-		{
-			this._Logs = new EntitySet<Log>(new Action<Log>(this.attach_Logs), new Action<Log>(this.detach_Logs));
-			this._Employee_Role = default(EntityRef<Employee_Role>);
-			this._Employee_Status = default(EntityRef<Employee_Status>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Employee_ID
-		{
-			get
-			{
-				return this._Employee_ID;
-			}
-			set
-			{
-				if ((this._Employee_ID != value))
-				{
-					this.OnEmployee_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Employee_ID = value;
-					this.SendPropertyChanged("Employee_ID");
-					this.OnEmployee_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Name
-		{
-			get
-			{
-				return this._Employee_Name;
-			}
-			set
-			{
-				if ((this._Employee_Name != value))
-				{
-					this.OnEmployee_NameChanging(value);
-					this.SendPropertyChanging();
-					this._Employee_Name = value;
-					this.SendPropertyChanged("Employee_Name");
-					this.OnEmployee_NameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Email
-		{
-			get
-			{
-				return this._Employee_Email;
-			}
-			set
-			{
-				if ((this._Employee_Email != value))
-				{
-					this.OnEmployee_EmailChanging(value);
-					this.SendPropertyChanging();
-					this._Employee_Email = value;
-					this.SendPropertyChanged("Employee_Email");
-					this.OnEmployee_EmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Password
-		{
-			get
-			{
-				return this._Employee_Password;
-			}
-			set
-			{
-				if ((this._Employee_Password != value))
-				{
-					this.OnEmployee_PasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Employee_Password = value;
-					this.SendPropertyChanged("Employee_Password");
-					this.OnEmployee_PasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeRole_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string EmployeeRole_ID
-		{
-			get
-			{
-				return this._EmployeeRole_ID;
-			}
-			set
-			{
-				if ((this._EmployeeRole_ID != value))
-				{
-					if (this._Employee_Role.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployeeRole_IDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeRole_ID = value;
-					this.SendPropertyChanged("EmployeeRole_ID");
-					this.OnEmployeeRole_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeStatus_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string EmployeeStatus_ID
-		{
-			get
-			{
-				return this._EmployeeStatus_ID;
-			}
-			set
-			{
-				if ((this._EmployeeStatus_ID != value))
-				{
-					if (this._Employee_Status.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployeeStatus_IDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeStatus_ID = value;
-					this.SendPropertyChanged("EmployeeStatus_ID");
-					this.OnEmployeeStatus_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Login", DbType="DateTime NOT NULL")]
-		public System.DateTime Last_Login
-		{
-			get
-			{
-				return this._Last_Login;
-			}
-			set
-			{
-				if ((this._Last_Login != value))
-				{
-					this.OnLast_LoginChanging(value);
-					this.SendPropertyChanging();
-					this._Last_Login = value;
-					this.SendPropertyChanged("Last_Login");
-					this.OnLast_LoginChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Log", Storage="_Logs", ThisKey="Employee_ID", OtherKey="Login_ID")]
-		public EntitySet<Log> Logs
-		{
-			get
-			{
-				return this._Logs;
-			}
-			set
-			{
-				this._Logs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Role_Employee", Storage="_Employee_Role", ThisKey="EmployeeRole_ID", OtherKey="EmployeeRole_ID", IsForeignKey=true)]
-		public Employee_Role Employee_Role
-		{
-			get
-			{
-				return this._Employee_Role.Entity;
-			}
-			set
-			{
-				Employee_Role previousValue = this._Employee_Role.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee_Role.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee_Role.Entity = null;
-						previousValue.Employees.Remove(this);
-					}
-					this._Employee_Role.Entity = value;
-					if ((value != null))
-					{
-						value.Employees.Add(this);
-						this._EmployeeRole_ID = value.EmployeeRole_ID;
-					}
-					else
-					{
-						this._EmployeeRole_ID = default(string);
-					}
-					this.SendPropertyChanged("Employee_Role");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Status_Employee", Storage="_Employee_Status", ThisKey="EmployeeStatus_ID", OtherKey="EmployeeStatus_ID", IsForeignKey=true)]
-		public Employee_Status Employee_Status
-		{
-			get
-			{
-				return this._Employee_Status.Entity;
-			}
-			set
-			{
-				Employee_Status previousValue = this._Employee_Status.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee_Status.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee_Status.Entity = null;
-						previousValue.Employees.Remove(this);
-					}
-					this._Employee_Status.Entity = value;
-					if ((value != null))
-					{
-						value.Employees.Add(this);
-						this._EmployeeStatus_ID = value.EmployeeStatus_ID;
-					}
-					else
-					{
-						this._EmployeeStatus_ID = default(string);
-					}
-					this.SendPropertyChanged("Employee_Status");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Logs(Log entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = this;
-		}
-		
-		private void detach_Logs(Log entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Logs")]
 	public partial class Log : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -802,8 +750,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		private string _Login_ID;
 		
 		private System.DateTime _Login_Date;
-		
-		private EntityRef<Employee> _Employee;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -819,7 +765,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		
 		public Log()
 		{
-			this._Employee = default(EntityRef<Employee>);
 			OnCreated();
 		}
 		
@@ -854,10 +799,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			{
 				if ((this._Login_ID != value))
 				{
-					if (this._Employee.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnLogin_IDChanging(value);
 					this.SendPropertyChanging();
 					this._Login_ID = value;
@@ -883,287 +824,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 					this._Login_Date = value;
 					this.SendPropertyChanged("Login_Date");
 					this.OnLogin_DateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Log", Storage="_Employee", ThisKey="Login_ID", OtherKey="Employee_ID", IsForeignKey=true)]
-		public Employee Employee
-		{
-			get
-			{
-				return this._Employee.Entity;
-			}
-			set
-			{
-				Employee previousValue = this._Employee.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee.Entity = null;
-						previousValue.Logs.Remove(this);
-					}
-					this._Employee.Entity = value;
-					if ((value != null))
-					{
-						value.Logs.Add(this);
-						this._Login_ID = value.Employee_ID;
-					}
-					else
-					{
-						this._Login_ID = default(string);
-					}
-					this.SendPropertyChanged("Employee");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Medical Summary]")]
-	public partial class Medical_Summary : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MedSum_ID;
-		
-		private int _Pet_ID;
-		
-		private string _Physical_Exam;
-		
-		private string _Fecal_Test;
-		
-		private string _Blood_Test;
-		
-		private string _Parasite_Exam;
-		
-		private System.DateTime _Last_Checkup;
-		
-		private EntityRef<Pet> _Pet;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMedSum_IDChanging(int value);
-    partial void OnMedSum_IDChanged();
-    partial void OnPet_IDChanging(int value);
-    partial void OnPet_IDChanged();
-    partial void OnPhysical_ExamChanging(string value);
-    partial void OnPhysical_ExamChanged();
-    partial void OnFecal_TestChanging(string value);
-    partial void OnFecal_TestChanged();
-    partial void OnBlood_TestChanging(string value);
-    partial void OnBlood_TestChanged();
-    partial void OnParasite_ExamChanging(string value);
-    partial void OnParasite_ExamChanged();
-    partial void OnLast_CheckupChanging(System.DateTime value);
-    partial void OnLast_CheckupChanged();
-    #endregion
-		
-		public Medical_Summary()
-		{
-			this._Pet = default(EntityRef<Pet>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedSum_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MedSum_ID
-		{
-			get
-			{
-				return this._MedSum_ID;
-			}
-			set
-			{
-				if ((this._MedSum_ID != value))
-				{
-					this.OnMedSum_IDChanging(value);
-					this.SendPropertyChanging();
-					this._MedSum_ID = value;
-					this.SendPropertyChanged("MedSum_ID");
-					this.OnMedSum_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pet_ID", DbType="Int NOT NULL")]
-		public int Pet_ID
-		{
-			get
-			{
-				return this._Pet_ID;
-			}
-			set
-			{
-				if ((this._Pet_ID != value))
-				{
-					if (this._Pet.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPet_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Pet_ID = value;
-					this.SendPropertyChanged("Pet_ID");
-					this.OnPet_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Physical_Exam", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Physical_Exam
-		{
-			get
-			{
-				return this._Physical_Exam;
-			}
-			set
-			{
-				if ((this._Physical_Exam != value))
-				{
-					this.OnPhysical_ExamChanging(value);
-					this.SendPropertyChanging();
-					this._Physical_Exam = value;
-					this.SendPropertyChanged("Physical_Exam");
-					this.OnPhysical_ExamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecal_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Fecal_Test
-		{
-			get
-			{
-				return this._Fecal_Test;
-			}
-			set
-			{
-				if ((this._Fecal_Test != value))
-				{
-					this.OnFecal_TestChanging(value);
-					this.SendPropertyChanging();
-					this._Fecal_Test = value;
-					this.SendPropertyChanged("Fecal_Test");
-					this.OnFecal_TestChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blood_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Blood_Test
-		{
-			get
-			{
-				return this._Blood_Test;
-			}
-			set
-			{
-				if ((this._Blood_Test != value))
-				{
-					this.OnBlood_TestChanging(value);
-					this.SendPropertyChanging();
-					this._Blood_Test = value;
-					this.SendPropertyChanged("Blood_Test");
-					this.OnBlood_TestChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parasite_Exam", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Parasite_Exam
-		{
-			get
-			{
-				return this._Parasite_Exam;
-			}
-			set
-			{
-				if ((this._Parasite_Exam != value))
-				{
-					this.OnParasite_ExamChanging(value);
-					this.SendPropertyChanging();
-					this._Parasite_Exam = value;
-					this.SendPropertyChanged("Parasite_Exam");
-					this.OnParasite_ExamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Checkup", DbType="Date NOT NULL")]
-		public System.DateTime Last_Checkup
-		{
-			get
-			{
-				return this._Last_Checkup;
-			}
-			set
-			{
-				if ((this._Last_Checkup != value))
-				{
-					this.OnLast_CheckupChanging(value);
-					this.SendPropertyChanging();
-					this._Last_Checkup = value;
-					this.SendPropertyChanged("Last_Checkup");
-					this.OnLast_CheckupChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pet_Medical_Summary", Storage="_Pet", ThisKey="Pet_ID", OtherKey="Pet_ID", IsForeignKey=true)]
-		public Pet Pet
-		{
-			get
-			{
-				return this._Pet.Entity;
-			}
-			set
-			{
-				Pet previousValue = this._Pet.Entity;
-				if (((previousValue != value) 
-							|| (this._Pet.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Pet.Entity = null;
-						previousValue.Medical_Summaries.Remove(this);
-					}
-					this._Pet.Entity = value;
-					if ((value != null))
-					{
-						value.Medical_Summaries.Add(this);
-						this._Pet_ID = value.Pet_ID;
-					}
-					else
-					{
-						this._Pet_ID = default(int);
-					}
-					this.SendPropertyChanged("Pet");
 				}
 			}
 		}
@@ -1313,9 +973,9 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		
 		private string _Pet_Type1;
 		
-		private EntitySet<Pet> _Pets;
-		
 		private EntitySet<Product> _Products;
+		
+		private EntitySet<Pet> _Pets;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1329,8 +989,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		
 		public Pet_Type()
 		{
-			this._Pets = new EntitySet<Pet>(new Action<Pet>(this.attach_Pets), new Action<Pet>(this.detach_Pets));
 			this._Products = new EntitySet<Product>(new Action<Product>(this.attach_Products), new Action<Product>(this.detach_Products));
+			this._Pets = new EntitySet<Pet>(new Action<Pet>(this.attach_Pets), new Action<Pet>(this.detach_Pets));
 			OnCreated();
 		}
 		
@@ -1374,19 +1034,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pet_Type_Pet", Storage="_Pets", ThisKey="PetType_ID", OtherKey="PetType_ID")]
-		public EntitySet<Pet> Pets
-		{
-			get
-			{
-				return this._Pets;
-			}
-			set
-			{
-				this._Pets.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pet_Type_Product", Storage="_Products", ThisKey="PetType_ID", OtherKey="PetType_ID")]
 		public EntitySet<Product> Products
 		{
@@ -1397,6 +1044,19 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			set
 			{
 				this._Products.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pet_Type_Pet", Storage="_Pets", ThisKey="PetType_ID", OtherKey="PetType_ID")]
+		public EntitySet<Pet> Pets
+		{
+			get
+			{
+				return this._Pets;
+			}
+			set
+			{
+				this._Pets.Assign(value);
 			}
 		}
 		
@@ -1420,18 +1080,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 			}
 		}
 		
-		private void attach_Pets(Pet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pet_Type = this;
-		}
-		
-		private void detach_Pets(Pet entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pet_Type = null;
-		}
-		
 		private void attach_Products(Product entity)
 		{
 			this.SendPropertyChanging();
@@ -1439,6 +1087,18 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		}
 		
 		private void detach_Products(Product entity)
+		{
+			this.SendPropertyChanging();
+			entity.Pet_Type = null;
+		}
+		
+		private void attach_Pets(Pet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Pet_Type = this;
+		}
+		
+		private void detach_Pets(Pet entity)
 		{
 			this.SendPropertyChanging();
 			entity.Pet_Type = null;
@@ -1899,540 +1559,6 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Products")]
-	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Product_ID;
-		
-		private string _Product_Name;
-		
-		private string _PetType_ID;
-		
-		private string _ProductType_ID;
-		
-		private int _Product_Stock;
-		
-		private int _Product_Price;
-		
-		private EntityRef<Pet_Type> _Pet_Type;
-		
-		private EntityRef<Product_Type> _Product_Type;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnProduct_IDChanging(int value);
-    partial void OnProduct_IDChanged();
-    partial void OnProduct_NameChanging(string value);
-    partial void OnProduct_NameChanged();
-    partial void OnPetType_IDChanging(string value);
-    partial void OnPetType_IDChanged();
-    partial void OnProductType_IDChanging(string value);
-    partial void OnProductType_IDChanged();
-    partial void OnProduct_StockChanging(int value);
-    partial void OnProduct_StockChanged();
-    partial void OnProduct_PriceChanging(int value);
-    partial void OnProduct_PriceChanged();
-    #endregion
-		
-		public Product()
-		{
-			this._Pet_Type = default(EntityRef<Pet_Type>);
-			this._Product_Type = default(EntityRef<Product_Type>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Product_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Product_ID
-		{
-			get
-			{
-				return this._Product_ID;
-			}
-			set
-			{
-				if ((this._Product_ID != value))
-				{
-					this.OnProduct_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Product_ID = value;
-					this.SendPropertyChanged("Product_ID");
-					this.OnProduct_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Product_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Product_Name
-		{
-			get
-			{
-				return this._Product_Name;
-			}
-			set
-			{
-				if ((this._Product_Name != value))
-				{
-					this.OnProduct_NameChanging(value);
-					this.SendPropertyChanging();
-					this._Product_Name = value;
-					this.SendPropertyChanged("Product_Name");
-					this.OnProduct_NameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PetType_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string PetType_ID
-		{
-			get
-			{
-				return this._PetType_ID;
-			}
-			set
-			{
-				if ((this._PetType_ID != value))
-				{
-					if (this._Pet_Type.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPetType_IDChanging(value);
-					this.SendPropertyChanging();
-					this._PetType_ID = value;
-					this.SendPropertyChanged("PetType_ID");
-					this.OnPetType_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductType_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ProductType_ID
-		{
-			get
-			{
-				return this._ProductType_ID;
-			}
-			set
-			{
-				if ((this._ProductType_ID != value))
-				{
-					if (this._Product_Type.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProductType_IDChanging(value);
-					this.SendPropertyChanging();
-					this._ProductType_ID = value;
-					this.SendPropertyChanged("ProductType_ID");
-					this.OnProductType_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Product_Stock", DbType="Int NOT NULL")]
-		public int Product_Stock
-		{
-			get
-			{
-				return this._Product_Stock;
-			}
-			set
-			{
-				if ((this._Product_Stock != value))
-				{
-					this.OnProduct_StockChanging(value);
-					this.SendPropertyChanging();
-					this._Product_Stock = value;
-					this.SendPropertyChanged("Product_Stock");
-					this.OnProduct_StockChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Product_Price", DbType="Int NOT NULL")]
-		public int Product_Price
-		{
-			get
-			{
-				return this._Product_Price;
-			}
-			set
-			{
-				if ((this._Product_Price != value))
-				{
-					this.OnProduct_PriceChanging(value);
-					this.SendPropertyChanging();
-					this._Product_Price = value;
-					this.SendPropertyChanged("Product_Price");
-					this.OnProduct_PriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pet_Type_Product", Storage="_Pet_Type", ThisKey="PetType_ID", OtherKey="PetType_ID", IsForeignKey=true)]
-		public Pet_Type Pet_Type
-		{
-			get
-			{
-				return this._Pet_Type.Entity;
-			}
-			set
-			{
-				Pet_Type previousValue = this._Pet_Type.Entity;
-				if (((previousValue != value) 
-							|| (this._Pet_Type.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Pet_Type.Entity = null;
-						previousValue.Products.Remove(this);
-					}
-					this._Pet_Type.Entity = value;
-					if ((value != null))
-					{
-						value.Products.Add(this);
-						this._PetType_ID = value.PetType_ID;
-					}
-					else
-					{
-						this._PetType_ID = default(string);
-					}
-					this.SendPropertyChanged("Pet_Type");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_Type_Product", Storage="_Product_Type", ThisKey="ProductType_ID", OtherKey="ProductType_ID", IsForeignKey=true)]
-		public Product_Type Product_Type
-		{
-			get
-			{
-				return this._Product_Type.Entity;
-			}
-			set
-			{
-				Product_Type previousValue = this._Product_Type.Entity;
-				if (((previousValue != value) 
-							|| (this._Product_Type.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Product_Type.Entity = null;
-						previousValue.Products.Remove(this);
-					}
-					this._Product_Type.Entity = value;
-					if ((value != null))
-					{
-						value.Products.Add(this);
-						this._ProductType_ID = value.ProductType_ID;
-					}
-					else
-					{
-						this._ProductType_ID = default(string);
-					}
-					this.SendPropertyChanged("Product_Type");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.employeeDisplay")]
-	public partial class employeeDisplay
-	{
-		
-		private string _Employee_ID;
-		
-		private string _Employee_Name;
-		
-		private string _Employee_Email;
-		
-		private string _Employee_Password;
-		
-		private string _Employee_Role;
-		
-		private string _Employee_Status;
-		
-		private System.DateTime _Last_Login;
-		
-		public employeeDisplay()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_ID
-		{
-			get
-			{
-				return this._Employee_ID;
-			}
-			set
-			{
-				if ((this._Employee_ID != value))
-				{
-					this._Employee_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Name
-		{
-			get
-			{
-				return this._Employee_Name;
-			}
-			set
-			{
-				if ((this._Employee_Name != value))
-				{
-					this._Employee_Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Email
-		{
-			get
-			{
-				return this._Employee_Email;
-			}
-			set
-			{
-				if ((this._Employee_Email != value))
-				{
-					this._Employee_Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Employee_Password
-		{
-			get
-			{
-				return this._Employee_Password;
-			}
-			set
-			{
-				if ((this._Employee_Password != value))
-				{
-					this._Employee_Password = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Role", DbType="VarChar(50)")]
-		public string Employee_Role
-		{
-			get
-			{
-				return this._Employee_Role;
-			}
-			set
-			{
-				if ((this._Employee_Role != value))
-				{
-					this._Employee_Role = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Status", DbType="VarChar(50)")]
-		public string Employee_Status
-		{
-			get
-			{
-				return this._Employee_Status;
-			}
-			set
-			{
-				if ((this._Employee_Status != value))
-				{
-					this._Employee_Status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Login", DbType="DateTime NOT NULL")]
-		public System.DateTime Last_Login
-		{
-			get
-			{
-				return this._Last_Login;
-			}
-			set
-			{
-				if ((this._Last_Login != value))
-				{
-					this._Last_Login = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.medicalDisplay")]
-	public partial class medicalDisplay
-	{
-		
-		private int _MedSum_ID;
-		
-		private string _Pet_Name;
-		
-		private string _Physical_Exam;
-		
-		private string _Fecal_Test;
-		
-		private string _Blood_Test;
-		
-		private string _Parasite_Exam;
-		
-		private System.DateTime _Last_Checkup;
-		
-		public medicalDisplay()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedSum_ID", DbType="Int NOT NULL")]
-		public int MedSum_ID
-		{
-			get
-			{
-				return this._MedSum_ID;
-			}
-			set
-			{
-				if ((this._MedSum_ID != value))
-				{
-					this._MedSum_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pet_Name", DbType="VarChar(50)")]
-		public string Pet_Name
-		{
-			get
-			{
-				return this._Pet_Name;
-			}
-			set
-			{
-				if ((this._Pet_Name != value))
-				{
-					this._Pet_Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Physical_Exam", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Physical_Exam
-		{
-			get
-			{
-				return this._Physical_Exam;
-			}
-			set
-			{
-				if ((this._Physical_Exam != value))
-				{
-					this._Physical_Exam = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecal_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Fecal_Test
-		{
-			get
-			{
-				return this._Fecal_Test;
-			}
-			set
-			{
-				if ((this._Fecal_Test != value))
-				{
-					this._Fecal_Test = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blood_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Blood_Test
-		{
-			get
-			{
-				return this._Blood_Test;
-			}
-			set
-			{
-				if ((this._Blood_Test != value))
-				{
-					this._Blood_Test = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parasite_Exam", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Parasite_Exam
-		{
-			get
-			{
-				return this._Parasite_Exam;
-			}
-			set
-			{
-				if ((this._Parasite_Exam != value))
-				{
-					this._Parasite_Exam = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Checkup", DbType="Date NOT NULL")]
-		public System.DateTime Last_Checkup
-		{
-			get
-			{
-				return this._Last_Checkup;
-			}
-			set
-			{
-				if ((this._Last_Checkup != value))
-				{
-					this._Last_Checkup = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.petDisplay")]
 	public partial class petDisplay
 	{
@@ -2698,6 +1824,793 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 				if ((this._Product_Price != value))
 				{
 					this._Product_Price = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.employeeDisplay")]
+	public partial class employeeDisplay
+	{
+		
+		private string _Employee_ID;
+		
+		private string _Employee_Name;
+		
+		private string _Employee_Email;
+		
+		private string _Employee_Role;
+		
+		private string _Employee_Status;
+		
+		private System.DateTime _Last_Login;
+		
+		public employeeDisplay()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_ID
+		{
+			get
+			{
+				return this._Employee_ID;
+			}
+			set
+			{
+				if ((this._Employee_ID != value))
+				{
+					this._Employee_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Name
+		{
+			get
+			{
+				return this._Employee_Name;
+			}
+			set
+			{
+				if ((this._Employee_Name != value))
+				{
+					this._Employee_Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Email
+		{
+			get
+			{
+				return this._Employee_Email;
+			}
+			set
+			{
+				if ((this._Employee_Email != value))
+				{
+					this._Employee_Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Role", DbType="VarChar(50)")]
+		public string Employee_Role
+		{
+			get
+			{
+				return this._Employee_Role;
+			}
+			set
+			{
+				if ((this._Employee_Role != value))
+				{
+					this._Employee_Role = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Status", DbType="VarChar(50)")]
+		public string Employee_Status
+		{
+			get
+			{
+				return this._Employee_Status;
+			}
+			set
+			{
+				if ((this._Employee_Status != value))
+				{
+					this._Employee_Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Login", DbType="DateTime NOT NULL")]
+		public System.DateTime Last_Login
+		{
+			get
+			{
+				return this._Last_Login;
+			}
+			set
+			{
+				if ((this._Last_Login != value))
+				{
+					this._Last_Login = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employees")]
+	public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Employee_ID;
+		
+		private string _Employee_Name;
+		
+		private string _Employee_Email;
+		
+		private string _Employee_Password;
+		
+		private string _EmployeeRole_ID;
+		
+		private string _EmployeeStatus_ID;
+		
+		private System.DateTime _Last_Login;
+		
+		private EntityRef<Employee_Role> _Employee_Role;
+		
+		private EntityRef<Employee_Status> _Employee_Status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEmployee_IDChanging(string value);
+    partial void OnEmployee_IDChanged();
+    partial void OnEmployee_NameChanging(string value);
+    partial void OnEmployee_NameChanged();
+    partial void OnEmployee_EmailChanging(string value);
+    partial void OnEmployee_EmailChanged();
+    partial void OnEmployee_PasswordChanging(string value);
+    partial void OnEmployee_PasswordChanged();
+    partial void OnEmployeeRole_IDChanging(string value);
+    partial void OnEmployeeRole_IDChanged();
+    partial void OnEmployeeStatus_IDChanging(string value);
+    partial void OnEmployeeStatus_IDChanged();
+    partial void OnLast_LoginChanging(System.DateTime value);
+    partial void OnLast_LoginChanged();
+    #endregion
+		
+		public Employee()
+		{
+			this._Employee_Role = default(EntityRef<Employee_Role>);
+			this._Employee_Status = default(EntityRef<Employee_Status>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Employee_ID
+		{
+			get
+			{
+				return this._Employee_ID;
+			}
+			set
+			{
+				if ((this._Employee_ID != value))
+				{
+					this.OnEmployee_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Employee_ID = value;
+					this.SendPropertyChanged("Employee_ID");
+					this.OnEmployee_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Name
+		{
+			get
+			{
+				return this._Employee_Name;
+			}
+			set
+			{
+				if ((this._Employee_Name != value))
+				{
+					this.OnEmployee_NameChanging(value);
+					this.SendPropertyChanging();
+					this._Employee_Name = value;
+					this.SendPropertyChanged("Employee_Name");
+					this.OnEmployee_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Email
+		{
+			get
+			{
+				return this._Employee_Email;
+			}
+			set
+			{
+				if ((this._Employee_Email != value))
+				{
+					this.OnEmployee_EmailChanging(value);
+					this.SendPropertyChanging();
+					this._Employee_Email = value;
+					this.SendPropertyChanged("Employee_Email");
+					this.OnEmployee_EmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employee_Password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Employee_Password
+		{
+			get
+			{
+				return this._Employee_Password;
+			}
+			set
+			{
+				if ((this._Employee_Password != value))
+				{
+					this.OnEmployee_PasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Employee_Password = value;
+					this.SendPropertyChanged("Employee_Password");
+					this.OnEmployee_PasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeRole_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EmployeeRole_ID
+		{
+			get
+			{
+				return this._EmployeeRole_ID;
+			}
+			set
+			{
+				if ((this._EmployeeRole_ID != value))
+				{
+					if (this._Employee_Role.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployeeRole_IDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeRole_ID = value;
+					this.SendPropertyChanged("EmployeeRole_ID");
+					this.OnEmployeeRole_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeStatus_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EmployeeStatus_ID
+		{
+			get
+			{
+				return this._EmployeeStatus_ID;
+			}
+			set
+			{
+				if ((this._EmployeeStatus_ID != value))
+				{
+					if (this._Employee_Status.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployeeStatus_IDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeStatus_ID = value;
+					this.SendPropertyChanged("EmployeeStatus_ID");
+					this.OnEmployeeStatus_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Login", DbType="DateTime NOT NULL")]
+		public System.DateTime Last_Login
+		{
+			get
+			{
+				return this._Last_Login;
+			}
+			set
+			{
+				if ((this._Last_Login != value))
+				{
+					this.OnLast_LoginChanging(value);
+					this.SendPropertyChanging();
+					this._Last_Login = value;
+					this.SendPropertyChanged("Last_Login");
+					this.OnLast_LoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Role_Employee", Storage="_Employee_Role", ThisKey="EmployeeRole_ID", OtherKey="EmployeeRole_ID", IsForeignKey=true)]
+		public Employee_Role Employee_Role
+		{
+			get
+			{
+				return this._Employee_Role.Entity;
+			}
+			set
+			{
+				Employee_Role previousValue = this._Employee_Role.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee_Role.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee_Role.Entity = null;
+						previousValue.Employees.Remove(this);
+					}
+					this._Employee_Role.Entity = value;
+					if ((value != null))
+					{
+						value.Employees.Add(this);
+						this._EmployeeRole_ID = value.EmployeeRole_ID;
+					}
+					else
+					{
+						this._EmployeeRole_ID = default(string);
+					}
+					this.SendPropertyChanged("Employee_Role");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Status_Employee", Storage="_Employee_Status", ThisKey="EmployeeStatus_ID", OtherKey="EmployeeStatus_ID", IsForeignKey=true)]
+		public Employee_Status Employee_Status
+		{
+			get
+			{
+				return this._Employee_Status.Entity;
+			}
+			set
+			{
+				Employee_Status previousValue = this._Employee_Status.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee_Status.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee_Status.Entity = null;
+						previousValue.Employees.Remove(this);
+					}
+					this._Employee_Status.Entity = value;
+					if ((value != null))
+					{
+						value.Employees.Add(this);
+						this._EmployeeStatus_ID = value.EmployeeStatus_ID;
+					}
+					else
+					{
+						this._EmployeeStatus_ID = default(string);
+					}
+					this.SendPropertyChanged("Employee_Status");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Medical Summary]")]
+	public partial class Medical_Summary : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MedSum_ID;
+		
+		private int _Pet_ID;
+		
+		private string _Physical_Exam;
+		
+		private string _Fecal_Test;
+		
+		private string _Blood_Test;
+		
+		private string _Parasite_Exam;
+		
+		private string _Last_Checkup;
+		
+		private EntityRef<Pet> _Pet;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMedSum_IDChanging(int value);
+    partial void OnMedSum_IDChanged();
+    partial void OnPet_IDChanging(int value);
+    partial void OnPet_IDChanged();
+    partial void OnPhysical_ExamChanging(string value);
+    partial void OnPhysical_ExamChanged();
+    partial void OnFecal_TestChanging(string value);
+    partial void OnFecal_TestChanged();
+    partial void OnBlood_TestChanging(string value);
+    partial void OnBlood_TestChanged();
+    partial void OnParasite_ExamChanging(string value);
+    partial void OnParasite_ExamChanged();
+    partial void OnLast_CheckupChanging(string value);
+    partial void OnLast_CheckupChanged();
+    #endregion
+		
+		public Medical_Summary()
+		{
+			this._Pet = default(EntityRef<Pet>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedSum_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MedSum_ID
+		{
+			get
+			{
+				return this._MedSum_ID;
+			}
+			set
+			{
+				if ((this._MedSum_ID != value))
+				{
+					this.OnMedSum_IDChanging(value);
+					this.SendPropertyChanging();
+					this._MedSum_ID = value;
+					this.SendPropertyChanged("MedSum_ID");
+					this.OnMedSum_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pet_ID", DbType="Int NOT NULL")]
+		public int Pet_ID
+		{
+			get
+			{
+				return this._Pet_ID;
+			}
+			set
+			{
+				if ((this._Pet_ID != value))
+				{
+					if (this._Pet.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPet_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Pet_ID = value;
+					this.SendPropertyChanged("Pet_ID");
+					this.OnPet_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Physical_Exam", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Physical_Exam
+		{
+			get
+			{
+				return this._Physical_Exam;
+			}
+			set
+			{
+				if ((this._Physical_Exam != value))
+				{
+					this.OnPhysical_ExamChanging(value);
+					this.SendPropertyChanging();
+					this._Physical_Exam = value;
+					this.SendPropertyChanged("Physical_Exam");
+					this.OnPhysical_ExamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecal_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Fecal_Test
+		{
+			get
+			{
+				return this._Fecal_Test;
+			}
+			set
+			{
+				if ((this._Fecal_Test != value))
+				{
+					this.OnFecal_TestChanging(value);
+					this.SendPropertyChanging();
+					this._Fecal_Test = value;
+					this.SendPropertyChanged("Fecal_Test");
+					this.OnFecal_TestChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blood_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Blood_Test
+		{
+			get
+			{
+				return this._Blood_Test;
+			}
+			set
+			{
+				if ((this._Blood_Test != value))
+				{
+					this.OnBlood_TestChanging(value);
+					this.SendPropertyChanging();
+					this._Blood_Test = value;
+					this.SendPropertyChanged("Blood_Test");
+					this.OnBlood_TestChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parasite_Exam", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Parasite_Exam
+		{
+			get
+			{
+				return this._Parasite_Exam;
+			}
+			set
+			{
+				if ((this._Parasite_Exam != value))
+				{
+					this.OnParasite_ExamChanging(value);
+					this.SendPropertyChanging();
+					this._Parasite_Exam = value;
+					this.SendPropertyChanged("Parasite_Exam");
+					this.OnParasite_ExamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Checkup", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Last_Checkup
+		{
+			get
+			{
+				return this._Last_Checkup;
+			}
+			set
+			{
+				if ((this._Last_Checkup != value))
+				{
+					this.OnLast_CheckupChanging(value);
+					this.SendPropertyChanging();
+					this._Last_Checkup = value;
+					this.SendPropertyChanged("Last_Checkup");
+					this.OnLast_CheckupChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pet_Medical_Summary", Storage="_Pet", ThisKey="Pet_ID", OtherKey="Pet_ID", IsForeignKey=true)]
+		public Pet Pet
+		{
+			get
+			{
+				return this._Pet.Entity;
+			}
+			set
+			{
+				Pet previousValue = this._Pet.Entity;
+				if (((previousValue != value) 
+							|| (this._Pet.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Pet.Entity = null;
+						previousValue.Medical_Summaries.Remove(this);
+					}
+					this._Pet.Entity = value;
+					if ((value != null))
+					{
+						value.Medical_Summaries.Add(this);
+						this._Pet_ID = value.Pet_ID;
+					}
+					else
+					{
+						this._Pet_ID = default(int);
+					}
+					this.SendPropertyChanged("Pet");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.medicalDisplay")]
+	public partial class medicalDisplay
+	{
+		
+		private int _MedSum_ID;
+		
+		private string _Pet_Name;
+		
+		private string _Physical_Exam;
+		
+		private string _Fecal_Test;
+		
+		private string _Blood_Test;
+		
+		private string _Parasite_Exam;
+		
+		private string _Last_Checkup;
+		
+		public medicalDisplay()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedSum_ID", DbType="Int NOT NULL")]
+		public int MedSum_ID
+		{
+			get
+			{
+				return this._MedSum_ID;
+			}
+			set
+			{
+				if ((this._MedSum_ID != value))
+				{
+					this._MedSum_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pet_Name", DbType="VarChar(50)")]
+		public string Pet_Name
+		{
+			get
+			{
+				return this._Pet_Name;
+			}
+			set
+			{
+				if ((this._Pet_Name != value))
+				{
+					this._Pet_Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Physical_Exam", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Physical_Exam
+		{
+			get
+			{
+				return this._Physical_Exam;
+			}
+			set
+			{
+				if ((this._Physical_Exam != value))
+				{
+					this._Physical_Exam = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecal_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Fecal_Test
+		{
+			get
+			{
+				return this._Fecal_Test;
+			}
+			set
+			{
+				if ((this._Fecal_Test != value))
+				{
+					this._Fecal_Test = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blood_Test", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Blood_Test
+		{
+			get
+			{
+				return this._Blood_Test;
+			}
+			set
+			{
+				if ((this._Blood_Test != value))
+				{
+					this._Blood_Test = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parasite_Exam", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Parasite_Exam
+		{
+			get
+			{
+				return this._Parasite_Exam;
+			}
+			set
+			{
+				if ((this._Parasite_Exam != value))
+				{
+					this._Parasite_Exam = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Last_Checkup", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Last_Checkup
+		{
+			get
+			{
+				return this._Last_Checkup;
+			}
+			set
+			{
+				if ((this._Last_Checkup != value))
+				{
+					this._Last_Checkup = value;
 				}
 			}
 		}

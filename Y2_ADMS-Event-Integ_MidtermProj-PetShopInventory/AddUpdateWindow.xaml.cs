@@ -22,9 +22,13 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     {
         PetChestConnDataContext _dbConn = null;
         public int _uspNum = 0;
-        public DateTime _calendarDate = DateTime.Now;
+        public string _calendarDate = "";
         public int _rowID = 0;
         private List<string> _rowDetails = new List<string>();
+
+        SoundSystem sound = new SoundSystem();
+
+        public string StatusMessagePasser { get; set; }
 
         public AddUpdateWindow(object selectedItem, string tableName, PetChestConnDataContext connection)
         {
@@ -91,12 +95,16 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             DisableAUWInterface();
             this.Close();
         }
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             if (btnConfirm.Content.ToString() == "Add")
             {
                 switch (_uspNum)
@@ -118,6 +126,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                             cbMedSumBlood.SelectedItem.ToString(), cbMedSumParasite.SelectedItem.ToString(), _calendarDate);
                         break;
                 }
+                StatusMessagePasser = "Sucessfully added an entry in the ";
             }
             else
             {
@@ -140,6 +149,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                             cbMedSumBlood.SelectedItem.ToString(), cbMedSumParasite.SelectedItem.ToString(), _calendarDate);
                         break;
                 }
+                StatusMessagePasser = "Sucessfully updated an entry in the ";
             }
             DisableAUWInterface();
             this.Close();
@@ -234,6 +244,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnMedSumDate_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             if (clndrDate.Visibility == Visibility.Collapsed)
                 clndrDate.Visibility = Visibility.Visible;
             else
@@ -242,10 +254,12 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void clndrDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
+            sound.Initialize("Terraria-UI-Sound.mp3", 5);
+
             DateTime selectedDate = clndrDate.SelectedDate.GetValueOrDefault();
 
-            _calendarDate = selectedDate;
-            btnMedSumDate.Content = selectedDate.ToShortDateString();
+            _calendarDate = selectedDate.ToShortDateString();
+            btnMedSumDate.Content = _calendarDate;
 
             clndrDate.Visibility = Visibility.Collapsed;
         }
