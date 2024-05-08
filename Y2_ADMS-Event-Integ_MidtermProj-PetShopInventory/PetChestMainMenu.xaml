@@ -38,7 +38,7 @@
 
 
         <!--#region Tables-->
-        <DataGrid x:Name="dgMainTable" FontSize="14" FontFamily="Segoe UI" CanUserResizeRows="False" CanUserResizeColumns="False" AutoGenerateColumns="True" Height="501" VerticalAlignment="Top" Margin="347,81,0,0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Width="812"/>
+        <DataGrid x:Name="dgMainTable" FontSize="14" FontFamily="Segoe UI" CanUserResizeRows="False" CanUserResizeColumns="False" AutoGenerateColumns="True" Height="501" VerticalAlignment="Top" Margin="347,81,0,0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Width="812" SelectionChanged="dgMainTable_SelectionChanged"/>
 
         <!--#endregion-->
 

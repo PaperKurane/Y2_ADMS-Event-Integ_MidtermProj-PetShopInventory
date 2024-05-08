@@ -1,34 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PetChest" Class="PetChestConnDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-PPNR6BQ\SQLEXPRESS;Initial Catalog=PetChest;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False" SettingsObjectName="Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.Properties.Settings" SettingsPropertyName="PetChestConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.medicalDisplay" Member="medicalDisplays">
-    <Type Name="medicalDisplay">
-      <Column Name="Pet_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Physical_Exam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Fecal_Test" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Blood_Test" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Parasite_Exam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Last_Checkup" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.petDisplay" Member="petDisplays">
-    <Type Name="petDisplay">
-      <Column Name="Pet_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Pet_Breed" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Pet_Age" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Pet_Sex" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Pet_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Pet_Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.productDisplay" Member="productDisplays">
-    <Type Name="productDisplay">
-      <Column Name="Product_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Pet_Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Product_Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Product_Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Product_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-PPNR6BQ\SQLEXPRESS;Initial Catalog=PetChest;Integrated Security=True;Connect Timeout=30;Encrypt=False" SettingsObjectName="Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.Properties.Settings" SettingsPropertyName="PetChestConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Employees" Member="Employees">
     <Type Name="Employee">
       <Column Name="Employee_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -47,6 +18,85 @@
       <Column Name="Login_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Login_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="Employee_Log" Member="Employee" ThisKey="Login_ID" OtherKey="Employee_ID" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pets" Member="Pets">
+    <Type Name="Pet">
+      <Column Name="Pet_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Pet_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PetType_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Breed" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Age" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Sex" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PetStatus_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Pet_Medical_Summary" Member="Medical_Summaries" ThisKey="Pet_ID" OtherKey="Pet_ID" Type="Medical_Summary" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product">
+      <Column Name="Product_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Product_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PetType_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductType_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Product_Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Product_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Medical Summary]" Member="Medical_Summaries">
+    <Type Name="Medical_Summary">
+      <Column Name="MedSum_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Pet_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Physical_Exam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecal_Test" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Blood_Test" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Parasite_Exam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Last_Checkup" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Pet_Medical_Summary" Member="Pet" ThisKey="Pet_ID" OtherKey="Pet_ID" Type="Pet" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employeeDisplay" Member="employeeDisplays">
+    <Type Name="employeeDisplay">
+      <Column Name="Employee_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Role" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Employee_Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Last_Login" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.medicalDisplay" Member="medicalDisplays">
+    <Type Name="medicalDisplay">
+      <Column Name="MedSum_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Physical_Exam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecal_Test" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Blood_Test" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Parasite_Exam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Last_Checkup" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.petDisplay" Member="petDisplays">
+    <Type Name="petDisplay">
+      <Column Name="Pet_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Pet_Breed" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Age" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Sex" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.productDisplay" Member="productDisplays">
+    <Type Name="productDisplay">
+      <Column Name="Product_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Product_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pet_Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Product_Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Product_Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Product_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.addMedSum" Method="addMedSum">
@@ -76,16 +126,6 @@
     <Parameter Name="Product_Price" Parameter="product_Price" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.updateMedSum" Method="updateMedSum">
-    <Parameter Name="MedSum_ID" Parameter="medSum_ID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Pet_ID" Parameter="pet_ID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Physical_Exam" Parameter="physical_Exam" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Fecal_Test" Parameter="fecal_Test" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Blood_Test" Parameter="blood_Test" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Parasite_Exam" Parameter="parasite_Exam" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Last_Checkup" Parameter="last_Checkup" Type="System.DateTime" DbType="Date" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.updatePets" Method="updatePets">
     <Parameter Name="Pet_ID" Parameter="pet_ID" Type="System.Int32" DbType="Int" />
     <Parameter Name="Pet_Name" Parameter="pet_Name" Type="System.String" DbType="VarChar(50)" />
@@ -104,6 +144,15 @@
     <Parameter Name="ProductType_ID" Parameter="productType_ID" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Product_Stock" Parameter="product_Stock" Type="System.Int32" DbType="Int" />
     <Parameter Name="Product_Price" Parameter="product_Price" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updateMedSum" Method="updateMedSum">
+    <Parameter Name="MedSum_ID" Parameter="medSum_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Physical_Exam" Parameter="physical_Exam" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Fecal_Test" Parameter="fecal_Test" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Blood_Test" Parameter="blood_Test" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Parasite_Exam" Parameter="parasite_Exam" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Last_Checkup" Parameter="last_Checkup" Type="System.DateTime" DbType="Date" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

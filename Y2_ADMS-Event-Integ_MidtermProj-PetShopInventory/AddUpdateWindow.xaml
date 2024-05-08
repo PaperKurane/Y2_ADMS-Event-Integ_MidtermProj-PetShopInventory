@@ -13,7 +13,7 @@
         <Label x:Name="lbWindowTitle" Content="Adding a New Entry to the..." FontFamily="Segoe UI SemiBold" FontSize="33" Foreground="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="75" Width="852"/>
 
         <Button x:Name="btnCancel" Content="Cancel" FontSize="28" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="27,393,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="49" Width="199" BorderThickness="2" BorderBrush="Black" Click="btnCancel_Click"/>
-        <Button x:Name="btnConfirm" Content="Add" FontSize="28" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="255,393,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="49" Width="198" BorderThickness="2" BorderBrush="Black" Click="btnConfirm_Click"/>
+        <Button x:Name="btnConfirm" Content="" FontSize="28" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="255,393,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="49" Width="198" BorderThickness="2" BorderBrush="Black" Click="btnConfirm_Click"/>
 
         <Grid x:Name="PetsTable" Visibility="Collapsed">
             <!--region Pets Table-->
@@ -82,7 +82,7 @@
             <!--#endregion-->
         </Grid>
 
-        <Grid x:Name="EmployeesTable" Visibility="Visible">
+        <Grid x:Name="EmployeesTable" Visibility="Collapsed">
             <!--region Employee Table-->
             <Label x:Name="lbEmployeesEmployeeID" Content="Employee ID" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="24" Height="45" Foreground="Black"/>
             <TextBox x:Name="tbEmployeesEmployeeID" HorizontalAlignment="Left" Margin="30,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="300" Height="35" FontFamily="Segoe UI" FontSize="20"/>

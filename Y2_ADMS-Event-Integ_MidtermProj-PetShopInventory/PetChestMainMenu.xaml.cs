@@ -18,12 +18,12 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     /// <summary>
     /// Interaction logic for PetChestMainMenu.xaml
     /// </summary>
+    
     public partial class PetChestMainMenu : Window
     {
         PetChestConnDataContext _dbConn = null;
         string _defaultTable = "btnPets";
         string _currentTable = "";
-
         string _currentUser = "";
 
         public PetChestMainMenu()
@@ -49,19 +49,19 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             switch (button)
             {
                 case "btnPets":
-                    table = from tb in _dbConn.Pets
+                    table = from tb in _dbConn.petDisplays
                             select (object)tb;
                     break;
                 case "btnProducts":
-                    table = from tb in _dbConn.Products
+                    table = from tb in _dbConn.productDisplays
                             select tb;
                     break;
                 case "btnMedSum":
-                    table = from tb in _dbConn.Medical_Summaries
+                    table = from tb in _dbConn.medicalDisplays
                             select tb;
                     break;
                 case "btnEmployees":
-                    table = from tb in _dbConn.Employees
+                    table = from tb in _dbConn.employeeDisplays
                             select (object)tb;
                     break;
                 case "btnLogs":
@@ -99,9 +99,49 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddUpdateWindow auw = new AddUpdateWindow(_currentTable);
+            AddUpdateWindow auw = new AddUpdateWindow(_currentTable, _dbConn);
             auw.Owner = this;
             auw.ShowDialog();   
+        }
+
+        private void dgMainTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgMainTable.SelectedItem != null)
+            {
+                if (_currentTable == "Pets")
+                {
+                    petDisplay selectedPet = dgMainTable.SelectedItem as petDisplay;
+                    if (selectedPet != null)
+                    {
+                        AddUpdateWindow auw = new AddUpdateWindow(selectedPet, _currentTable, _dbConn);
+                        auw.Owner = this;
+                        auw.ShowDialog();
+                    }
+                }
+                else if (_currentTable == "Products")
+                {
+                    productDisplay selectedProduct = dgMainTable.SelectedItem as productDisplay;
+                    if (selectedProduct != null)
+                    {
+                        AddUpdateWindow auw = new AddUpdateWindow(selectedProduct, _currentTable, _dbConn);
+                        auw.Owner = this;
+                        auw.ShowDialog();
+                    }
+                }
+                else if (_currentTable == "MedSum")
+                {
+                    medicalDisplay selectedMedSum = dgMainTable.SelectedItem as medicalDisplay;
+                    if (selectedMedSum != null)
+                    {
+                        AddUpdateWindow auw = new AddUpdateWindow(selectedMedSum, _currentTable, _dbConn);
+                        auw.Owner = this;
+                        auw.ShowDialog();
+                    }
+                }
+                else
+                {
+                }
+            }
         }
     }
 }
