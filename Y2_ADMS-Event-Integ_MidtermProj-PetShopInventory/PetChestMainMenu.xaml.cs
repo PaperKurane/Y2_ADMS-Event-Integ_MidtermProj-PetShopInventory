@@ -33,15 +33,17 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             InitializeComponent();
         }
 
-        public PetChestMainMenu(string userName, PetChestConnDataContext connection)
+        public PetChestMainMenu(string userName, PetChestConnDataContext connection, string messageString)
         {
             InitializeComponent();
 
             _currentUser = userName;
             _dbConn = connection;
 
-            StatusMessageHandler("Welcome to the system " + userName + "!");
+            //StatusMessageHandler("Welcome to the system " + userName + "!");
+            //StatusMessageHandler(messageString);
             RetrieveDefaultTable();
+            StatusMessageHandler(messageString);
         }
 
         private void StatusMessageHandler(string message)

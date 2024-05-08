@@ -34,6 +34,8 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            string messageString = "";
+
             if (tbUsername.Text.Length > 0 && tbPassword.Text.Length > 0)
             {
                 IQueryable<Employee> selectResults = from s in _dbConn.Employees
@@ -42,35 +44,33 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
 
                 if (selectResults.Count() == 1)
                 {
-                    //MessageBox.Show("Username exists");
-
                     foreach (Employee s in selectResults)
                     {
                         if (s.Employee_Password == tbPassword.Text)
                         {
-                            //if (s. == null)
-                            //    messageString += $" Welcome {s.LoginName}!";
-                            //else
-                            //    messageString += $" Welcome back {s.LoginName}! Havent seen you since {s.LoginDate}";
+                            if (s.Last_Login == null)
+                                messageString += $" Welcome {s.Employee_Name}!";
+                            else
+                                messageString += $" Welcome back {s.Employee_Name}! Havent seen you since {s.Last_Login}";
 
-                            //s.LoginDate = DateTime.Now;
+                            s.Last_Login = DateTime.Now;
 
-                            Employee employ = new Employee();
-                            //employ.LoginID = s.LoginID;
-                            //employ.LogDate = (DateTime)s.LoginDate;
+                            Log logInsertion = new Log();
+                            logInsertion.Login_ID = s.Employee_ID;
+                            logInsertion.Login_Date = (DateTime)s.Last_Login;
 
-                            //_dbConn.tblLogs.InsertOnSubmit(tlog);
+                            _dbConn.Logs.InsertOnSubmit(logInsertion);
                             flag = true;
                             break;
                         }
                     }
-                    //_dbConn.SubmitChanges();
+                    _dbConn.SubmitChanges();
                 }
             }
 
             if (flag)
             {
-                PetChestMainMenu w = new PetChestMainMenu(tbUsername.Text, _dbConn);
+                PetChestMainMenu w = new PetChestMainMenu(tbUsername.Text, _dbConn, messageString);
                 w.Show();
                 this.Close();
             }
