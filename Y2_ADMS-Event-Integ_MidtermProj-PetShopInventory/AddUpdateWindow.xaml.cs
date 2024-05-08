@@ -126,6 +126,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                             cbMedSumBlood.SelectedItem.ToString(), cbMedSumParasite.SelectedItem.ToString(), _calendarDate);
                         break;
                 }
+                StatusMessagePasser = "Sucessfully added an entry in the ";
             }
             else
             {
@@ -148,9 +149,9 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                             cbMedSumBlood.SelectedItem.ToString(), cbMedSumParasite.SelectedItem.ToString(), _calendarDate);
                         break;
                 }
+                StatusMessagePasser = "Sucessfully updated an entry in the ";
             }
             DisableAUWInterface();
-            StatusMessagePasser = "Value to pass to the other window";
             this.Close();
         }
 

@@ -80,26 +80,31 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                     table = from tb in _dbConn.petDisplays
                             select (object)tb;
                     StatusMessageHandler("Now viewing the Pets Table.");
+                    btnAdd.IsEnabled = true;
                     break;
                 case "btnProducts":
                     table = from tb in _dbConn.productDisplays
                             select tb;
                     StatusMessageHandler("Now viewing the Products Table.");
+                    btnAdd.IsEnabled = true;
                     break;
                 case "btnMedSum":
                     table = from tb in _dbConn.medicalDisplays
                             select tb;
                     StatusMessageHandler("Now viewing the Medical Summary Table.");
+                    btnAdd.IsEnabled = true;
                     break;
                 case "btnEmployees":
                     table = from tb in _dbConn.employeeDisplays
                             select (object)tb;
-                    StatusMessageHandler("Now viewing the Employees Table.");
+                    StatusMessageHandler("Now viewing the Employees Table."); 
+                    btnAdd.IsEnabled = false;
                     break;
                 case "btnLogs":
                     table = from tb in _dbConn.Logs
                             select tb;
                     StatusMessageHandler("Now viewing the Logs Table.");
+                    btnAdd.IsEnabled = false;
                     break;
             }
 
