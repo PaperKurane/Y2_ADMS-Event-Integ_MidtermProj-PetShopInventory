@@ -26,11 +26,38 @@
       <Association Name="Employee_Status_Employee" Member="Employees" ThisKey="EmployeeStatus_ID" OtherKey="EmployeeStatus_ID" Type="Employee" />
     </Type>
   </Table>
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="Employee_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Employee_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeRole_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeStatus_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Last_Login" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_Log" Member="Logs" ThisKey="Employee_ID" OtherKey="Login_ID" Type="Log" />
+      <Association Name="Employee_Role_Employee" Member="Employee_Role" ThisKey="EmployeeRole_ID" OtherKey="EmployeeRole_ID" Type="Employee_Role" IsForeignKey="true" />
+      <Association Name="Employee_Status_Employee" Member="Employee_Status" ThisKey="EmployeeStatus_ID" OtherKey="EmployeeStatus_ID" Type="Employee_Status" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Logs" Member="Logs">
     <Type Name="Log">
       <Column Name="Log_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Login_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Login_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_Log" Member="Employee" ThisKey="Login_ID" OtherKey="Employee_ID" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Medical Summary]" Member="Medical_Summaries">
+    <Type Name="Medical_Summary">
+      <Column Name="MedSum_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Pet_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Physical_Exam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecal_Test" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Blood_Test" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Parasite_Exam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Last_Checkup" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Pet_Medical_Summary" Member="Pet" ThisKey="Pet_ID" OtherKey="Pet_ID" Type="Pet" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.[Pet Status]" Member="Pet_Status">
@@ -46,6 +73,7 @@
       <Column Name="Pet_Type" Member="Pet_Type1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="Pet_Type_Product" Member="Products" ThisKey="PetType_ID" OtherKey="PetType_ID" Type="Product" />
       <Association Name="Pet_Type_Pet" Member="Pets" ThisKey="PetType_ID" OtherKey="PetType_ID" Type="Pet" />
+      <Association Name="Pet_Type_Product" Member="Products" ThisKey="PetType_ID" OtherKey="PetType_ID" Type="Product" />
     </Type>
   </Table>
   <Table Name="dbo.Pets" Member="Pets">
@@ -90,6 +118,8 @@
       <Column Name="Product_Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Product_Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Product_Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Pet_Type_Product" Member="Pet_Type" ThisKey="PetType_ID" OtherKey="PetType_ID" Type="Pet_Type" IsForeignKey="true" />
+      <Association Name="Product_Type_Product" Member="Product_Type" ThisKey="ProductType_ID" OtherKey="ProductType_ID" Type="Product_Type" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.employeeDisplay" Member="employeeDisplays">
@@ -97,6 +127,7 @@
       <Column Name="Employee_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Employee_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Employee_Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Employee_Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Employee_Role" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Employee_Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Last_Login" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
@@ -167,6 +198,7 @@
   </Function>
   <Function Name="dbo.updateMedSum" Method="updateMedSum">
     <Parameter Name="MedSum_ID" Parameter="medSum_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Pet_ID" Parameter="pet_ID" Type="System.Int32" DbType="Int" />
     <Parameter Name="Physical_Exam" Parameter="physical_Exam" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Fecal_Test" Parameter="fecal_Test" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Blood_Test" Parameter="blood_Test" Type="System.String" DbType="VarChar(50)" />
