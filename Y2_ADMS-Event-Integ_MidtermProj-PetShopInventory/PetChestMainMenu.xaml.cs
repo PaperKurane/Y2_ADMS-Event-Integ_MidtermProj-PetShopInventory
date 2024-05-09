@@ -77,30 +77,35 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
             switch (button)
             {
                 case "btnPets":
+                    dgMainTable.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
                     table = from tb in _dbConn.petDisplays
                             select (object)tb;
                     StatusMessageHandler("Now viewing the Pets Table.");
                     btnAdd.IsEnabled = true;
                     break;
                 case "btnProducts":
+                    dgMainTable.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
                     table = from tb in _dbConn.productDisplays
                             select tb;
                     StatusMessageHandler("Now viewing the Products Table.");
                     btnAdd.IsEnabled = true;
                     break;
                 case "btnMedSum":
+                    dgMainTable.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
                     table = from tb in _dbConn.medicalDisplays
                             select tb;
                     StatusMessageHandler("Now viewing the Medical Summary Table.");
                     btnAdd.IsEnabled = true;
                     break;
                 case "btnEmployees":
+                    dgMainTable.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Auto);
                     table = from tb in _dbConn.employeeDisplays
                             select (object)tb;
                     StatusMessageHandler("Now viewing the Employees Table."); 
                     btnAdd.IsEnabled = false;
                     break;
                 case "btnLogs":
+                    dgMainTable.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
                     table = from tb in _dbConn.Logs
                             select tb;
                     StatusMessageHandler("Now viewing the Logs Table.");

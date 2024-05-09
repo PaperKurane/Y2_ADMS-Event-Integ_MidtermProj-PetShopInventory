@@ -66,8 +66,16 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
                             flag = true;
                             break;
                         }
+                        else if (s.Employee_Password != tbPassword.Text)
+                        {
+                            lbLoginError.Visibility = Visibility.Visible;
+                        }
                     }
                     _dbConn.SubmitChanges();
+                }
+                else
+                {
+                    lbLoginError.Visibility = Visibility.Visible;
                 }
             }
 

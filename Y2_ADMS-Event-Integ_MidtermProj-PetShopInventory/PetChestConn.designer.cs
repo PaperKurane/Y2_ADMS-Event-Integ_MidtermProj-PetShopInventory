@@ -39,7 +39,7 @@ namespace Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory
     #endregion
 		
 		public PetChestConnDataContext() : 
-				base(global::Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.Properties.Settings.Default.PetChestConnectionString1, mappingSource)
+				base(global::Y2_ADMS_Event_Integ_MidtermProj_PetShopInventory.Properties.Settings.Default.PetChestConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
